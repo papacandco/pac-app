@@ -1,0 +1,2 @@
+## The schedule
+* * * * * php /papac-and-co/app-production/artisan schedule:run
