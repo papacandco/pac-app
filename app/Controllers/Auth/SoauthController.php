@@ -4,10 +4,10 @@ namespace App\Controllers\Auth;
 
 use App\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Auth\Events\Verified;
 use Bow\Http\Request;
+use Bow\Soauth\Soauth;
 
-class SocialiteController extends Controller
+class SoauthController extends Controller
 {
     /**
      * The available providers
@@ -37,9 +37,7 @@ class SocialiteController extends Controller
             return app_abort(404);
         }
 
-        $driver = Socialite::driver($provider);
-
-        return $driver->redirect();
+        return Soauth::redirect($provider);
     }
 
     /**
@@ -56,7 +54,7 @@ class SocialiteController extends Controller
 
         try {
             // Get user information from provider api
-            $user = Socialite::driver($provider)->user();
+            $user = Soauth::resource($provider);
         } catch (\Exception $exception) {
             return redirect()
                 ->route('login')

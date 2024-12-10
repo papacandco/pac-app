@@ -18,6 +18,7 @@
         "php": "^8.1",
         "bowphp/framework": "^5.0",
         "bowphp/policier": "^3.0",
+        "bowphp/soauth": "^1.0",
         "guzzlehttp/guzzle": "^7.9"
     },
     "require-dev": {

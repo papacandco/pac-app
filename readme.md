@@ -1,55 +1,60 @@
-<img src="https://raw.githubusercontent.com/bowphp/arts/master/bow.jpg" width="100">
+# Papac & Co
 
-## Bow Framework
+Improve your programming skills, and your understanding of computer systems with international standards and learn new techniques thanks to rich and varied free tutorials.
 
-The simple way to create the web app
-The bowphp is a PHP Framework, written by **[Franck DAKIA](http://github.com/papac)** and several other contributors.
+[https://codelearningclub.com](https://codelearningclub.com "Papac & Co")
 
-<a href="https://bowphp.com" title="docs"><img src="https://img.shields.io/badge/docs-read%20docs-blue.svg?style=flat-square"/></a>
-<a href="https://packagist.org/packages/bowphp/framework" title="bowphp/framework"><img src="https://img.shields.io/packagist/v/bowphp/framework.svg?style=flat-square"/></a>
-<a href="https://packagist.org/packages/bowphp/app" title="bowphp/app"><img src="https://img.shields.io/packagist/v/bowphp/app.svg?style=flat-square"/></a>
-<a href="https://github.com/bowphp/app/blob/master/LICENSE" title="license"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"/></a>
+[![papac-and-co](https://github.com/papacandcoapp/papac-and-co/actions/workflows/01_tests.yml/badge.svg)](https://github.com/papacandcoapp/papac-and-co/actions/workflows/01_tests.yml)
 
-The goal is to allow beginners who want to work on a more significant project to get started and understand the workings of collaborative development. And make this framework a reference in the PHP community around the world.
+## Install
 
-**Do not hesitate to start now with the [documentation](https://bowphp.com).**
+Clone the repository and install all dependencies.
 
-## Prerequisites
+The requirements:
 
-You must make sure the following items are installed on your machine.
+- Composer for installing the PHP dependencies
+- Npm for compiling the assets
+- Install the AWS CLI and make the configuration (contact [@papac](mailto:dakiafranck@gmail.com) for the credentials). The setting should be made on the VPS/EC2 server Create a virtual host for dev environment:
 
-- PHP >= 8.1
-- OpenSSL PHP Extension
-- PDO PHP Extension
-- Mbstring PHP Extension
-- XML PHP Extension
-- JSON PHP Extension
+```dns
+127.0.0.1 codelearningclub.test
+```
 
-## Bow Sponsors
+> In `/etc/hosts` for Linux system or `C:/Windows/system32/drivers/etc/hosts` for windows.
 
-We would like to extend our thanks to the following sponsors for funding Bow Framework development. If you are interested in becoming a sponsor, please contact [Franck DAKIA](https://github.com/papac):
+### Install dependencies
 
-- [Adjemin](https://adjemin.com)
-- [Akil Technologies](https://akiltechnologies.com/)
-- [Etudesk](https://etudesk.com)
+Installation of project php dependencies like this.
 
-## Contributing
+```bash
+sail composer update
+```
 
-Thank you for considering contributing to Bow Framework! The contribution guide is in the framework documentation.
+Installation frontend dep
 
-- [Franck DAKIA](https://github.com/papac)
-- [Thank's collaborators](https://github.com/bowphp/app/graphs/contributors)
+```bash
+sail npm install
+sail laravel.test cp system/fixtures/Vue.js node_modules/laravel-mix/src/components/Vue.js
+```
 
-## Contact
+> You must exec `sail up` before
 
-- [Franck DAKIA](https://github.com/papac)
-- [Thank's collaborators](https://github.com/bowphp/docs/graphs/contributors)
+### Migration
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+After, making the migration
 
-Please, if there is a bug on the project contact me by email or leave me a message on [Slack](https://bowphp.slack.com). or [join us on Slask](https://join.slack.com/t/bowphp/shared_invite/enQtNzMxOTQ0MTM2ODM5LTQ3MWQ3Mzc1NDFiNDYxMTAyNzBkNDJlMTgwNDJjM2QyMzA2YTk4NDYyN2NiMzM0YTZmNjU1YjBhNmJjZThiM2Q)
+```bash
+sail artisan migrate --seed
+sail artisan db:seed --class=ConfigurationTableSeeder
+```
 
+### Docker Service
+
+If you want to make a development configuration you can run the docker service.
+Copy the .env.docker to .env and run the following command
+
+```bash
+sail up -d
+// Or 
+sail down
+```
