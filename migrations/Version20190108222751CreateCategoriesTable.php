@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
+use Bow\Database\Migration\SQLGenerator;
 
 class CreateCategoriesTable extends Migration
 {
@@ -11,22 +10,22 @@ class CreateCategoriesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('color', 7)->nullable();
-            $table->tinyInteger('type')->default(1);
-            $table->tinyInteger('with_forum')->default(1);
-            $table->string('description');
-            $table->text('long_description')->nullable();
-            $table->string('video')->nullable();
-            $table->string('duration')->nullable();
-            $table->tinyInteger('level')->nullable();
-            $table->string('cover')->nullable();
-            $table->timestamps();
+        $this->create('categories', function (SQLGenerator $table) {
+            $table->addIncrement('id');
+            $table->addString('title');
+            $table->addString('slug', ['unique' => true]);
+            $table->addString('color', ['size' => 1, 'nullable' => true]);
+            $table->addTinyInteger('type', ['default' => 1]);
+            $table->addTinyInteger('with_forum', ['default' => 1]);
+            $table->addString('description');
+            $table->addText('long_description', ['nullable' => true]);
+            $table->addString('video', ['nullable' => true]);
+            $table->addString('duration', ['nullable' => true]);
+            $table->addTinyInteger('level', ['nullable' => true]);
+            $table->addString('cover', ['nullable' => true]);
+            $table->addTimestamps();
         });
     }
 
@@ -35,8 +34,8 @@ class CreateCategoriesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('categories');
+        $this->dropIfExists('categories');
     }
 }

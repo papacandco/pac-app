@@ -1,0 +1,19 @@
+%extends('mail.layout')
+
+%php
+$route = route('forum.question', [
+  'slug' => $question->slug,
+  'id' => $question->id
+]);
+%endphp
+
+%block('content')
+{{ get_greeting_by_time() }} <b>{{ $question->author->name }}</b>,
+<br>
+<p>{{ $comment->user->name }} a répondu à votre question <a href="{{ $route }}">{{ $question->title }}</a></p>
+<hr>
+<p style="font-size: 16px; padding: 10px; margin-top: 10px">
+	<img src="{{ gravatar($comment->user->email, 20) }}" style="border-radius: 100px; position: relative; top: -5px; margin-right: 4px;"> {{ $comment->content }}
+</p>
+%include('mail.reject-message')
+%endsection

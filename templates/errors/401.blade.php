@@ -1,6 +1,0 @@
-@extends('errors.layout', ['code' => 401])
-
-@section('error')
-  <h1>401</h1>
-  <p>{!! __('error.401') !!}</p>
-@endsection

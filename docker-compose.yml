@@ -1,21 +1,12 @@
 services:
-  app:
+  node:
     build:
       context: ./
       dockerfile: Dockerfile
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    ports:
-      - "${APP_PORT:-8000}:8000"
     networks:
       - pac
-    depends_on:
-      - mysql
-      - redis
-      - mailhog
-      - minio
     volumes:
-      - pac-app:/app
+      - ./:/app
   mysql:
     image: "mysql"
     ports:
