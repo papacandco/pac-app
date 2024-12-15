@@ -44,7 +44,7 @@ body {
 
 .bg-image {
   // background-image: url(/img/clc-bg.svg), linear-gradient( #202020 1%, $brand-blue 15%);
-  background-image: url(/img/clc-bg.svg);
+  background-image: url("/img/clc-bg.svg");
   background-color: $brand-blue;
   background-repeat: no-repeat;
   background-size: cover;
