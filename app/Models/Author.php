@@ -8,13 +8,6 @@ use Bow\Database\Barry\Relations\HasMany;
 class Author extends Model
 {
     /**
-     * The fillable columns
-     *
-     * @var array
-     */
-    protected $fillable = ['pseudo', 'email', 'name', 'description'];
-
-    /**
      * Get the list tutorials
      */
     public function tutorials(): HasMany

@@ -2,25 +2,21 @@
 
 namespace App\Models;
 
+use Bow\Database\Barry\Model;
+use Bow\Database\Barry\Builder;
+use App\Models\Traits\PremiumTrait;
 use App\Models\Traits\BookmarkTrait;
 use App\Models\Traits\CoverUrlTrait;
-use App\Models\Traits\FindByTrait;
+use Bow\Database\Barry\Relations\HasMany;
 use App\Models\Traits\HasTechnologieTrait;
-use App\Models\Traits\PremiumTrait;
-use Illuminate\Database\Eloquent\Builder;
-use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Bow\Database\Collection;
 
 class Curriculum extends Model
 {
     use BookmarkTrait;
     use CoverUrlTrait;
-    use FindByTrait;
     use HasTechnologieTrait;
     use PremiumTrait;
-    use SoftDeletes;
 
     /**
      * Define the table used by model
@@ -28,18 +24,6 @@ class Curriculum extends Model
      * @var string
      */
     protected $table = 'curriculums';
-
-    /**
-     * The fillable data
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'title', 'slug', 'color', 'video',
-        'with_forum', 'long_description',
-        'level', 'duration', 'description',
-        'cover', 'technologie_id',
-    ];
 
     /**
      * The level of curriculum
@@ -73,7 +57,7 @@ class Curriculum extends Model
      *
      * @return HasMany
      */
-    public function sections()
+    public function sections(): HasMany
     {
         return $this->hasMany(Section::class);
     }
@@ -157,7 +141,7 @@ class Curriculum extends Model
      *
      * @return Builder
      */
-    public function withForum()
+    public function withForum(): Builder
     {
         return $this->where('with_forum', 1);
     }
@@ -167,7 +151,7 @@ class Curriculum extends Model
      *
      * @return HasMany
      */
-    public function questions()
+    public function questions(): HasMany
     {
         return $this->hasMany(Question::class, 'curriculum_id', 'id');
     }
@@ -175,9 +159,9 @@ class Curriculum extends Model
     /**
      * Get the lastest questions
      *
-     * @return mixed
+     * @return Collection
      */
-    public function lastQuestion($number = 5)
+    public function lastQuestion($number = 5): Collection
     {
         return $this->questions()
             ->select('id', 'title', 'user_id', 'slug', 'created_at')
@@ -189,7 +173,7 @@ class Curriculum extends Model
      *
      * @return HasMany
      */
-    public function progrestions()
+    public function progrestions(): HasMany
     {
         return $this->hasMany(Progrestion::class, 'curriculum_id');
     }
@@ -197,9 +181,9 @@ class Curriculum extends Model
     /**
      * Compute the progress for user
      *
-     * @return int
+     * @return float|int
      */
-    public function computeProgression(User $user)
+    public function computeProgression(User $user): float|int
     {
         $current = $this->progrestions()->where('user_id', $user->id)->whereEnded(true)->count();
 

@@ -35,14 +35,14 @@ class SearchController extends Controller
         $query = trim(addslashes($request->get('q', '')));
 
         if (strlen($query) == 0) {
-            return abort(404);
+            return app_abort(404);
         }
 
         $author = $request->get('author');
         $filter = $request->get('filter', 'tutorial');
 
         if (! in_array($filter, ['formation', 'podcast', 'tutorial', 'question'])) {
-            return abort(404);
+            return app_abort(404);
         }
 
         Log::info('information recherchez: '.$query);

@@ -1,4 +1,5 @@
 FROM ubuntu:22.04
+
 ARG DEBIAN_FRONTEND=noninteractive
 
 COPY ./ /app
@@ -18,11 +19,11 @@ RUN apt-get install -y nodejs
 # PHP Setup
 RUN add-apt-repository ppa:ondrej/php -y
 RUN apt-get install -y \
-    php8.1-cli php8.1-mysql \
-    php8.1-mbstring php8.1-xml php8.1-iconv \
-    php8.1-gd php8.1-fpm php8.1-dom \
-    php8.1-zip php8.1-bcmath php8.1-sqlite3 \
-    php8.1-pgsql php8.1-curl php8.1-intl
+    php8.3-cli php8.3-mysql \
+    php8.3-mbstring php8.3-xml php8.3-iconv \
+    php8.3-gd php8.3-fpm php8.3-dom \
+    php8.3-zip php8.3-bcmath php8.3-sqlite3 \
+    php8.3-pgsql php8.3-curl php8.3-intl
 
 ## PHP Composer setup
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -31,8 +32,6 @@ RUN php -r "unlink('composer-setup.php');"
 RUN rm -rf vendor
 RUN composer update
 
-## NPN Setup
-RUN npm install --force --legacy-peer-deps 2> /dev/null
-RUN cp system/fixtures/Vue.js node_modules/laravel-mix/src/components/Vue.js
-
 EXPOSE 8000
+
+CMD [ "php", "-v" ]

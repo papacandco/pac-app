@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Traits\CoverUrlTrait;
-use App\Models\Traits\LatestTrait;
 use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Models\Traits\LatestTrait;
+use App\Models\Traits\CoverUrlTrait;
+use Bow\Database\Barry\Relations\HasMany;
+use Bow\Database\Barry\Relations\BelongsTo;
 
 class Challenge extends Model
 {
@@ -14,20 +14,11 @@ class Challenge extends Model
     use LatestTrait;
 
     /**
-     * The fillable column
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'title', 'description', 'video', 'technologie_id', 'diffused', 'author_id', 'diffused_at',
-    ];
-
-    /**
      * The dates transformation
      *
      * @var array
      */
-    protected $dates = ['diffused_at'];
+    protected array $dates = ['diffused_at'];
 
     /**
      * Challenge constructor
@@ -98,7 +89,7 @@ class Challenge extends Model
      *
      * @return HasMany
      */
-    public function invitations()
+    public function invitations(): HasMany
     {
         return $this->hasMany(ChallengeInvite::class);
     }
@@ -174,7 +165,7 @@ class Challenge extends Model
      *
      * @return BelongsTo
      */
-    public function technologie()
+    public function technologie(): BelongsTo
     {
         return $this->belongsTo(Technologie::class, 'technologie_id');
     }

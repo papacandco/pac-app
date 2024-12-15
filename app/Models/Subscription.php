@@ -8,24 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Subscription extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
-
-    /**
-     * The fillable data
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'id',
-        'product_id',
-        'next_product_id',
-        'ended_at',
-        'grace_time_ended_at',
-        'user_id',
-        'extras',
-    ];
-
     /**
      * Hidden field
      *

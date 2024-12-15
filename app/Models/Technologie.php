@@ -2,22 +2,17 @@
 
 namespace App\Models;
 
+use App\Models\Material;
+use Bow\Database\Barry\Model;
+use Bow\Database\Barry\Builder;
 use App\Models\Traits\BookmarkTrait;
 use App\Models\Traits\CoverUrlTrait;
-use App\Models\Traits\FindByTrait;
-use Illuminate\Database\Eloquent\Builder;
-use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Bow\Database\Barry\Relations\HasMany;
 
 class Technologie extends Model
 {
     use BookmarkTrait;
     use CoverUrlTrait;
-    use FindByTrait;
-    use SoftDeletes;
 
     /**
      * The level of curriculum
@@ -35,15 +30,6 @@ class Technologie extends Model
     ];
 
     /**
-     * The fillable data
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'title', 'slug', 'parent_id', 'color', 'description', 'cover', 'with_forum', 'published_at',
-    ];
-
-    /**
      * Hidden field
      *
      * @var array
@@ -55,7 +41,7 @@ class Technologie extends Model
      *
      * @var array
      */
-    protected $dates = ['published_at'];
+    protected array $dates = ['published_at'];
 
     /**
      * Technologie constructor
@@ -76,7 +62,7 @@ class Technologie extends Model
      *
      * @return Builder
      */
-    public function withForum()
+    public function withForum(): Builder
     {
         return $this->whereWithForum(true);
     }
@@ -86,7 +72,7 @@ class Technologie extends Model
      *
      * @return HasMany
      */
-    public function tutorials()
+    public function tutorials(): HasMany
     {
         return $this->hasMany(Tutorial::class, 'technologie_id');
     }

@@ -66,7 +66,7 @@ class SoauthController extends Controller
             $email = sprintf('%s_stub_email@codelearningclub.com', $user->getId());
         }
 
-        $pseudo = $provider.'_'.$user->getId();
+        $pseudo = $provider.'_'.$user->getNickname();
 
         // Find the user by email
         $registed_user = $this->user->where('email', $email)->first();
@@ -74,7 +74,7 @@ class SoauthController extends Controller
         // Create the new user account if he not exists
         if (is_null($registed_user)) {
             $registed_user = $this->create([
-                'avatar' => $user->avatar,
+                'avatar' => $user->getAvatar(),
                 'pseudo' => $pseudo,
                 'name' => $user->getName(),
                 'email' => $email,
@@ -89,11 +89,6 @@ class SoauthController extends Controller
 
         // Log user
         auth()->login($registed_user);
-
-        // Mark email has verified
-        if ($registed_user->markEmailAsVerified()) {
-            event(new Verified($registed_user));
-        }
 
         // Create the flash information
         $message = sprintf(

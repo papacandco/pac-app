@@ -10,7 +10,6 @@ use App\Models\Traits\PremiumTrait;
 use App\Models\Traits\TaggableTrait;
 use Bow\Database\Barry\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tutorial extends Model
 {
@@ -19,7 +18,6 @@ class Tutorial extends Model
     use HasTechnologieTrait;
     use LatestTrait;
     use PremiumTrait;
-    use SoftDeletes;
     use TaggableTrait;
 
     /**
@@ -52,7 +50,7 @@ class Tutorial extends Model
      *
      * @var array
      */
-    protected $dates = ['published_at'];
+    protected array $dates = ['published_at'];
 
     /**
      * Tutorial constructor

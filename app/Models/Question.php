@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use Bow\Database\Collection;
+use Bow\Database\Barry\Model;
 use App\Models\Traits\HasUpdated;
 use App\Models\Traits\TaggableTrait;
-use Illuminate\Database\Eloquent\Collection;
-use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Bow\Database\Barry\Relations\BelongsTo;
 
 /**
  * @property mixed $title
@@ -16,15 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Question extends Model
 {
     use HasUpdated;
-    use SoftDeletes;
     use TaggableTrait;
-
-    /**
-     * The fillale column
-     *
-     * @var array
-     */
-    protected $fillable = ['title', 'slug', 'content', 'user_id', 'curriculum_id'];
 
     /**
      * Question constructor
@@ -67,7 +58,7 @@ class Question extends Model
      *
      * @return BelongsTo
      */
-    public function curriculum()
+    public function curriculum(): BelongsTo
     {
         return $this->belongsTo(Curriculum::class, 'curriculum_id', 'id');
     }
@@ -77,7 +68,7 @@ class Question extends Model
      *
      * @return int
      */
-    public function numberOfComment()
+    public function numberOfComment(): int
     {
         return $this->comments()->count();
     }
@@ -97,7 +88,7 @@ class Question extends Model
      *
      * @return bool
      */
-    public function hasCurriculum()
+    public function hasCurriculum(): bool
     {
         return $this->curriculum_id != 0;
     }
@@ -109,7 +100,7 @@ class Question extends Model
      */
     public function author()
     {
-        return $this->belongsTo(\App\Models\User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -117,7 +108,7 @@ class Question extends Model
      *
      * @return Collection
      */
-    public function technologies()
+    public function technologies(): Collection
     {
         return $this->taggables()->join('technologies', 'technologies.id', 'taggables.tag_id')->select('technologies.*')->get();
     }

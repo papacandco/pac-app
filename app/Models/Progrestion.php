@@ -3,28 +3,16 @@
 namespace App\Models;
 
 use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Bow\Database\Barry\Relations\BelongsTo;
 
 class Progrestion extends Model
 {
-    use SoftDeletes;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'user_id', 'timespent', 'ended', 'progressable', 'started_at', 'ended_at', 'curriculum_id', 'tutorial_id',
-    ];
-
     /**
      * Get the user associate to progrestion
      *
      * @return BelongsTo
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }

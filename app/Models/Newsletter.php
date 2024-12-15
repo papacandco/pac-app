@@ -3,19 +3,9 @@
 namespace App\Models;
 
 use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Newsletter extends Model
 {
-    use SoftDeletes;
-
-    /**
-     * The list of fillable
-     *
-     * @var array
-     */
-    protected $fillable = ['email'];
-
     /**
      * Check the email exists
      *

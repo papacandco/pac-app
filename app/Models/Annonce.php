@@ -28,17 +28,6 @@ class Annonce extends Model
     public const ANNONCE_ADS = '3';
 
     /**
-     * The fillable fields
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'type', 'message', 'link', 'online', 'cover', 'click',
-        'started_at', 'ended_at', 'created_at', 'updated_at',
-        'color', 'bg_color', 'link_color', 'font_color',
-    ];
-
-    /**
      * Date mutator
      *
      * @var array

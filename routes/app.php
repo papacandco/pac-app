@@ -1,5 +1,8 @@
 <?php
 
+$app->get('/', 'Generic\LandingController')
+    ->name('index');
+
 $app->get('/ajax/tutorials', 'Api\TutorialController');
 $app->get('/ajax/tutorials/:id', 'Api\TutorialController@show');
 
@@ -39,9 +42,6 @@ $app->get('payments/{transaction}/congratulation', 'PaymentController@paymentSta
 
 $app->post('payments/{transaction}/congratulation', 'PaymentController@paymentStatus')
     ->name('payment.congratulation');
-
-$app->get('/', 'Generic\LandingController')
-    ->name('index');
 
 $app->get('terms', 'Generic\SupportController@showTerms')
     ->name('terms');

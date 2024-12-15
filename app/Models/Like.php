@@ -7,16 +7,9 @@ use Bow\Database\Barry\Model;
 class Like extends Model
 {
     /**
-     * The fillbale column
-     *
-     * @var array
-     */
-    protected $fillable = ['likable_id', 'likable_type', 'user_id', 'user_type'];
-
-    /**
      * Get likable target
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     * @return MorphTo
      */
     public function likable()
     {
@@ -26,7 +19,7 @@ class Like extends Model
     /**
      * Get the like author
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     * @return MorphTo
      */
     public function author()
     {

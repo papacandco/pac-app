@@ -214,8 +214,8 @@ class CommentController extends Controller
 
         // Add request source
         $data['source_ip'] = $request->ip();
-        $data['source_client'] = $request->userAgent();
-        $data['source_referer'] = $request->header('referer');
+        $data['source_client'] = $request->getHeader('user-agent');
+        $data['source_referer'] = $request->getHeader('referer');
 
         return $data;
     }

@@ -8,16 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
-
-    /**
-     * The fillable data
-     */
-    protected $fillable = [
-        'product_id', 'identifier', 'title', 'description', 'price', 'published_at', 'options', 'order', 'published',
-    ];
-
     /**
      * Hidden field
      *
@@ -30,7 +20,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $dates = ['published_at'];
+    protected array $dates = ['published_at'];
 
     /**
      * __mutator for the options attribute

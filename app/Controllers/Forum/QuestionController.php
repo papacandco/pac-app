@@ -153,7 +153,7 @@ class QuestionController extends Controller
 
         if (! $question) {
             return redirect()
-                ->routr('forum')
+                ->route('forum')
                 ->withFlash('success', "La question ciblé n'a pas été trouvé");
         }
 
@@ -184,14 +184,14 @@ class QuestionController extends Controller
 
         if (! $question) {
             return redirect()
-                ->routr('forum')
+                ->route('forum')
                 ->withFlash('success', "La question ciblé n'a pas été trouvé");
         }
 
         $question->delete();
 
         return redirect()
-            ->routr('forum')
+            ->route('forum')
             ->withFlash('success', 'La question a été supprimé !');
     }
 }

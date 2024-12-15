@@ -2,26 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Bow\Database\Barry\Relations\BelongsTo;
 
 class Transaction extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
-
-    /**
-     * The fillable data
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'id', 'amount', 'status', 'provider', 'type', 'target_id', 'target_type', 'user_id', 'user_type', 'extras',
-    ];
-
     /**
      * Hidden field
      *
@@ -93,7 +78,7 @@ class Transaction extends Model
      *
      * @return BelongsTo
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
@@ -113,7 +98,7 @@ class Transaction extends Model
      *
      * @return string
      */
-    public function getLabelAttribute()
+    public function getLabelAttribute(): string
     {
         if ($this->target_type == Tutorial::class) {
             return 'Achat de tutoriel';

@@ -2,15 +2,15 @@
 
 namespace App\Controllers\Generic;
 
-use App\Controllers\Controller;
+use Bow\Support\Str;
+use Bow\Http\Request;
 use App\Models\Annonce;
+use App\Models\Tutorial;
 use App\Models\Challenge;
-use App\Models\Configuration;
 use App\Models\Curriculum;
 use App\Models\Technologie;
-use App\Models\Tutorial;
-use Bow\Http\Request;
-use Illuminate\Support\Str;
+use App\Models\Configuration;
+use App\Controllers\Controller;
 
 class LandingController extends Controller
 {
@@ -37,7 +37,7 @@ class LandingController extends Controller
         $configuration = $this->configuration->first();
 
         if (is_null($configuration)) {
-            return abort(503);
+            return app_abort(503);
         }
 
         // Get annonce information
@@ -45,13 +45,10 @@ class LandingController extends Controller
             ->whereIn('type', [Annonce::ANNONCE_NEW, Annonce::ANNONCE_JOB])
             ->first();
 
-        $secure_prefix = Str::random(8);
-
         return view('vendor.landing', compact(
             'tutorials',
             'configuration',
             'annonce',
-            'secure_prefix'
         ));
     }
 }

@@ -49,7 +49,7 @@ class ChallengeController extends Controller
         $challenge = $this->challenge->findOrFail($challenge_id);
 
         if ($challenge->slug != $slug) {
-            return abort(404);
+            return app_abort(404);
         }
 
         return view('challenge.single', compact('challenge'));

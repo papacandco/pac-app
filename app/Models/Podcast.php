@@ -2,21 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\Traits\CoverUrlTrait;
+use Bow\Database\Barry\Model;
 use App\Models\Traits\LatestTrait;
 use App\Models\Traits\PremiumTrait;
+use App\Models\Traits\CoverUrlTrait;
 use App\Models\Traits\TaggableTrait;
-use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Bow\Database\Barry\Relations\BelongsTo;
 
 class Podcast extends Model
 {
     use CoverUrlTrait;
     use LatestTrait;
     use PremiumTrait;
-    use SoftDeletes;
     use TaggableTrait;
 
     /**
@@ -47,7 +44,7 @@ class Podcast extends Model
      *
      * @return MorphMany
      */
-    public function comments()
+    public function comments(): mixed
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
@@ -57,7 +54,7 @@ class Podcast extends Model
      *
      * @return BelongsTo
      */
-    public function author()
+    public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class, 'author_id');
     }

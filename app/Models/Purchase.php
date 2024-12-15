@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Bow\Database\Barry\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Purchase extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'user_id',
         'price',

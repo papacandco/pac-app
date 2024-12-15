@@ -2,21 +2,11 @@
 
 namespace App\Models;
 
+use Bow\Storage\Storage;
 use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
 
 class Material extends Model
 {
-    use SoftDeletes;
-
-    /**
-     * The mass assignable columns
-     *
-     * @var array
-     */
-    protected $fillable = ['description', 'path', 'filename', 'filesize', 'mimetype', 'extension'];
-
     /**
      * Material constructor
      */

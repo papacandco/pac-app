@@ -3,8 +3,7 @@
 namespace App\Models;
 
 use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Bow\Database\Barry\Relations\BelongsTo;
 
 class Taggable extends Model
 {
@@ -37,7 +36,7 @@ class Taggable extends Model
      *
      * @return BelongsTo
      */
-    public function tag()
+    public function tag(): BelongsTo
     {
         return $this->belongsTo(Technologie::class, 'tag_id');
     }
@@ -47,7 +46,7 @@ class Taggable extends Model
      *
      * @return BelongsTo|string
      */
-    public function toHtml()
+    public function toHtml(): BelongsTo|string
     {
         $tag = $this->belongsTo(Technologie::class, 'tag_id');
 

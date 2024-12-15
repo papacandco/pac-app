@@ -10,12 +10,14 @@ services:
   mysql:
     image: "mysql"
     ports:
-      - "${FORWARD_DB_PORT:-3306}:3306"
+      - "${FORWARD_DATA_PORT:-3306}:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD:-secret}"
-      MYSQL_DATABASE: "${DB_DATABASE:-papac_and_co}"
-      MYSQL_USER: "${DB_USERNAME:-root}"
-      MYSQL_PASSWORD: "${DB_PASSWORD:-secret}"
+      MYSQL_ROOT_PASSWORD: "-secret"
+      MYSQL_DATABASE: "pac_database"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "secret"
+      MYSQL_RANDOM_ROOT_PASSWORD: "no"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
       - "pac-mysql:/var/lib/mysql"
     networks:

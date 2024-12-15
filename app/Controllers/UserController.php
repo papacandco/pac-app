@@ -51,7 +51,7 @@ class UserController extends Controller
         };
 
         if (is_null($bookmarks)) {
-            return abort(404);
+            return app_abort(404);
         }
 
         return view('user.bookmarks.'.$type, compact('user', 'bookmarks'));

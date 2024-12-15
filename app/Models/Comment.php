@@ -2,41 +2,18 @@
 
 namespace App\Models;
 
+use Spatie\Sitemap\Tags\Tag;
+use Bow\Database\Barry\Model;
 use App\Models\Traits\HasUpdated;
 use App\Models\Traits\LatestTrait;
+use Bow\Database\Barry\Relations\HasMany;
+use Bow\Database\Barry\Relations\BelongsTo;
 use App\Notifications\ReplyCommentNotification;
-use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Sitemap\Tags\Tag;
-use stdClass;
 
 class Comment extends Model
 {
     use HasUpdated;
     use LatestTrait;
-    use SoftDeletes;
-
-    /**
-     * The fillable column
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'content',
-        'commentable_id',
-        'commentable_type',
-        'user_id',
-        'user_type',
-        'parent_id',
-        'source_ip',
-        'source_client',
-        'source_referer',
-        'source_location',
-    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -78,7 +55,7 @@ class Comment extends Model
      *
      * @return HasMany
      */
-    public function comments()
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class, 'parent_id');
     }
@@ -178,7 +155,7 @@ class Comment extends Model
      *
      * @return BelongsTo description
      */
-    public function parent()
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(Comment::class, 'parent_id');
     }
@@ -192,7 +169,7 @@ class Comment extends Model
     public function getSourceLocationAttribute($value)
     {
         if (is_null($value)) {
-            return new stdClass;
+            return new \stdClass;
         }
 
         return json_decode($value);

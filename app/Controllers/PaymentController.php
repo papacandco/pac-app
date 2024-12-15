@@ -2,25 +2,24 @@
 
 namespace App\Controllers;
 
-use App\Events\PaymentSuccessfulEvent;
-use App\Models\Anonymous;
+use Bow\Support\Log;
+use Bow\Http\Request;
+use Ramsey\Uuid\Uuid;
 use App\Models\Country;
-use App\Models\Curriculum;
 use App\Models\Product;
-use App\Models\Transaction;
 use App\Models\Tutorial;
+use App\Models\Anonymous;
+use App\Models\Curriculum;
+use App\Models\Transaction;
+use App\Services\CinetpayService;
+use App\Events\PaymentSuccessfulEvent;
 use App\Notifications\DonationFailedNotification;
 use App\Notifications\DonationSuccessNotification;
-use App\Notifications\ElementPaymentFailedNotification;
-use App\Notifications\ElementPaymentSuccessNotification;
 use App\Notifications\SubscriptionFailedNotification;
 use App\Notifications\SubscriptionSuccessNotification;
-use App\Services\CinetpayService;
+use App\Notifications\ElementPaymentFailedNotification;
+use App\Notifications\ElementPaymentSuccessNotification;
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
-use Bow\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
-use Ramsey\Uuid\Uuid;
 
 class PaymentController extends Controller
 {
@@ -88,7 +87,7 @@ class PaymentController extends Controller
         };
 
         if (is_null($element)) {
-            return abort(404);
+            return app_abort(404);
         }
 
         if (! $user->hasPurchased($element)) {
@@ -179,7 +178,7 @@ class PaymentController extends Controller
                 'currency' => $currency,
                 'reference' => static::REFERENCE,
                 'ip' => $request->ip(),
-                'user_agent' => $request->userAgent(),
+                'user_agent' => $request->getHeader('x-user-agent'),
             ]),
         ]);
 
@@ -231,7 +230,7 @@ class PaymentController extends Controller
                 'currency' => $currency,
                 'reference' => sprintf('subscription to product %s', $product->id),
                 'ip' => $request->ip(),
-                'user_agent' => $request->userAgent(),
+                'user_agent' => $request->getHeader('user-agent'),
             ]),
         ]);
 
@@ -250,7 +249,7 @@ class PaymentController extends Controller
         $currency = $request->get('currency');
 
         if (! class_exists($element_type, true)) {
-            return abort(404);
+            return app_abort(404);
         }
 
         if (is_null($currency) || ! in_array($currency, ['XOF'])) {
@@ -290,7 +289,7 @@ class PaymentController extends Controller
                 'currency' => $currency ?? 'XOF',
                 'reference' => $message,
                 'ip' => $request->ip(),
-                'user_agent' => $request->userAgent(),
+                'user_agent' => $request->getHeader('user-agent'),
             ]),
         ]);
 
@@ -310,7 +309,7 @@ class PaymentController extends Controller
 
         // Check the hmac token
         $this->cinetpayService->checkHmacToken(
-            (string) $request->header('X-Token'),
+            (string) $request->getHeader('X-Token'),
             $attributes
         );
 

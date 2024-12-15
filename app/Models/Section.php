@@ -3,22 +3,11 @@
 namespace App\Models;
 
 use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Bow\Database\Barry\Relations\HasMany;
+use Bow\Database\Barry\Relations\BelongsTo;
 
 class Section extends Model
 {
-    use SoftDeletes;
-
-    /**
-     * The mass assignable column
-     *
-     * @var array
-     */
-    protected $fillable = ['title', 'description', 'order', 'curriculum_id'];
-
     /**
      * Disable timestamps
      *
@@ -31,7 +20,7 @@ class Section extends Model
      *
      * @return HasMany
      */
-    public function graphs()
+    public function graphs(): HasMany
     {
         return $this->hasMany(Graph::class)->withFlash('element')->orderBy('order');
     }
@@ -52,7 +41,7 @@ class Section extends Model
      *
      * @param BelongsTo
      */
-    public function curriculum()
+    public function curriculum(): BelongsTo
     {
         return $this->belongsTo(Curriculum::class);
     }

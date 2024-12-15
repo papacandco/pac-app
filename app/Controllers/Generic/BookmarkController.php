@@ -25,17 +25,6 @@ class BookmarkController extends Controller
     ];
 
     /**
-     * BookmarkController constructor
-     *
-     * @return void
-     */
-    public function __construct(
-        private Tutorial $tutorial
-    ) {
-        $this->middleware('auth');
-    }
-
-    /**
      * Mark tutorial
      *
      * @param  int  $bookmarkable_id

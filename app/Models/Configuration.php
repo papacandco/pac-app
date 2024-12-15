@@ -6,14 +6,6 @@ use Bow\Database\Barry\Model;
 
 class Configuration extends Model
 {
-    /**
-     * The fillable fields
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'username', 'email', 'password', 'mode', 'about_video',
-    ];
 
     /**
      * The primary key

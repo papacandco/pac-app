@@ -119,7 +119,7 @@ class ForumController extends Controller
         if (! is_null($curriculum_id)) {
             $curriculum = $this->curriculum->find($curriculum_id);
             if (is_null($curriculum)) {
-                return abort(404);
+                return app_abort(404);
             }
         }
 

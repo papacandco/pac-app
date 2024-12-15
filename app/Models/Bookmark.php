@@ -3,8 +3,7 @@
 namespace App\Models;
 
 use Bow\Database\Barry\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Bow\Database\Barry\Relations\BelongsTo;
 
 class Bookmark extends Model
 {
@@ -30,7 +29,7 @@ class Bookmark extends Model
      *
      * @return BelongsTo
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
