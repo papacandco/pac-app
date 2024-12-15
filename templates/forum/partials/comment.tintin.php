@@ -28,11 +28,11 @@
     </a>
   </div>
 </div>
-%foreach ($comment->comments ?? [] as $cmt)
+%loop ($comment->comments ?? [] as $cmt)
   <div style="margin-left: 40px; font-size: 13px; padding: 0px; border-bottom: 0.5px dotted #eee">
       <div class="text-muted" style="font-size: 10px;">
         <b>{{ $cmt->created_at->diffForHumans(null) }}</b>
       </div>
       %include('partials.markdown', ['content' => $cmt->content."\n".'**%'.($cmt->user->pseudo ?? $cmt->user->name).'** &nbsp; '])
   </div>
-%endforeach
+%endloop

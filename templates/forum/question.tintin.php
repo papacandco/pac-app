@@ -5,7 +5,7 @@
 %block('description')
   <meta name="description" content="{{ $question->title }}">
   <meta name="author" content="{{ $question->author->name }}">
-%endsection
+%endblock
 
 %block('seo')
   %include('partials.seo', [
@@ -14,7 +14,7 @@
     'image'         => $curriculum->cover ?? config('meta.image'),
     'author'        => $question->author->name
   ])
-%endsection
+%endblock
 
 %block('style')
 <link rel="stylesheet" id="highlight-css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/monokai-sublime.min.css" />
@@ -29,7 +29,7 @@
 </style>
 
 %include("forum.partials.editor-css")
-%endsection
+%endblock
 
 %block('content')
 %if($curriculum !== false)
@@ -43,7 +43,7 @@
         'title' => $question->title,
         'url' => route('forum.question', ['slug' => $question->slug, 'id' => $question->id])
       ])
-      %if (count($taggables = ($question->taggables ?? [])) > 0)
+      %if(count($taggables = ($question->taggables ?? [])) > 0)
         <br>
         %include('partials.tags-sidebar', ['taggables' => $taggables])
       %endif
@@ -66,7 +66,7 @@
       </ul>
       %include('forum.partials.question-header')
       %auth
-        %if (auth()->user()->id === $question->user_id)
+        %if(auth()->user()->id === $question->user_id)
           <a style="font-size: 13px" href="{{ route("forum.question.update", ["slug" => $question->slug, "id" => $question->id]) }}" class="text-muted">
             <i class="fa fa-edit"></i>&nbsp;{{ __('tutorial.form_response_modify') }}
           </a>&middot;
@@ -77,11 +77,11 @@
       %endif
       <span style="font-size: 13px;" class="text-muted pull-right">Mise à jour {{ $question->updated_at->diffForHumans(null) }}</span>
       {## <div class="pull-right">
-        %php $margin = 0; %endphp
-        %foreach($contributors as $contributor)
+        %raw $margin = 0; %endraw
+        %loop($contributors as $contributor)
           <img src="{{ gravatar($contributor->user->email, 25)}}" class="img-circle img-responvise"
             style="display: inline-block; position: relative; top: 5px; left: -{{ $margin += 10 }}px"/>
-        %endforeach
+        %endloop
       </div> ##}
       <h4>
         {{ __('forum.join-conversation') }}
@@ -115,7 +115,7 @@
         'url' => route('forum.question', ['slug' => $question->slug, 'id' => $question->id]),
         'class' => 'nav-pills'
       ])
-      %if (count($taggables = $question->taggables) > 0)
+      %if(count($taggables = $question->taggables) > 0)
         <br>
         %include('partials.tags-sidebar', ['taggables' => $taggables, 'class' => 'nav-pills'])
       %endif
@@ -126,11 +126,11 @@
 </section>
 %auth
   %include('forum.modal.follow')
-  %if (auth()->user()->id === $question->user_id)
+  %if(auth()->user()->id === $question->user_id)
     %include('forum.modal.delete-question')
   %endif
 %endauth
-%endsection
+%endblock
 
 %block('script')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -155,4 +155,4 @@
     });
   </script>
   %include('partials.editor-script')
-%endsection
+%endblock

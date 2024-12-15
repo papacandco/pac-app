@@ -1,0 +1,78 @@
+//
+// Alerts
+// --------------------------------------------------
+
+
+// Base styles
+// -------------------------
+
+.alert {
+  padding: $alert-padding;
+  margin-bottom: $line-height-computed;
+  border: 2px solid transparent;
+  // border-top: 10px solid;
+  // border-bottom: 5px solid transparent;
+
+  // Headings for larger alerts
+  h4 {
+    margin-top: 0;
+    color: inherit; // Specified for the h4 to prevent conflicts of changing $headings-color
+  }
+
+  // Provide class for links that match alerts
+  .alert-link {
+    font-weight: $alert-link-font-weight;
+  }
+
+  // Improve alignment and spacing of inner content
+  > p,
+  > ul {
+    margin-bottom: 0;
+  }
+
+  > p + p {
+    margin-top: 5px;
+  }
+}
+
+// Dismissible alerts
+//
+// Expand the right padding and account for the close button's positioning.
+
+// The misspelled .alert-dismissable was deprecated in 3.2.0.
+.alert-dismissable,
+.alert-dismissible {
+  padding-right: ($alert-padding + 20);
+
+  // Adjust close link position
+  .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    color: inherit;
+  }
+}
+
+// Alternate styles
+//
+// Generate contextual modifier classes for colorizing the alert.
+
+.alert-success {
+  @include alert-variant(#fff, $alert-success-border, $alert-success-text);
+}
+
+.alert-info {
+  @include alert-variant(#fff, $alert-info-border, $alert-info-text);
+}
+
+.alert-warning {
+  @include alert-variant(#fff, $alert-warning-border, $alert-warning-text);
+}
+
+.alert-danger {
+  @include alert-variant(#fff, $alert-danger-border, $alert-danger-text);
+}
+
+.alert-blue {
+  @include alert-variant(#fff, $alert-blue-border, $alert-blue-text);
+}

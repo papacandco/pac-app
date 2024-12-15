@@ -1,6 +1,6 @@
 %extends('mail.layout')
 
-%php
+%raw
 $route = route('forum.question', [
   'slug' => $question->slug,
   'id' => $question->id
@@ -10,7 +10,7 @@ $forum_route = route('forum.single', [
   'slug' => $curriculum->slug,
   'id' => $curriculum->id
 ]);
-%endphp
+%endraw
 
 %block('content')
 {{ get_greeting_by_time() }} <b>{{ $user->name }}</b>,
@@ -22,4 +22,4 @@ $forum_route = route('forum.single', [
 	<img src="{{ gravatar($user->email, 20) }}" style="border-radius: 100px; position: relative; top: -5px; margin-right: 4px;"> {{ $question->content }}
 </p>
 %include('mail.reject-message')
-%endsection
+%endblock

@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#78AB4E">
 <meta name="msapplication-navbutton-color" content="#78AB4E">
 <meta name="apple-mobile-web-app-status-bar-style" content="#78AB4E">
-<title>%yield('title') | {{ config('app.name') }}</title>
+<title>%inject('title') | {{ config('app.name') }}</title>
 <meta property="og:title" content="Papac & Co">
 <meta property="og:site_name" content="Papac & Co">
 <meta property="og:url" content="https://www.codelearningclub.com">

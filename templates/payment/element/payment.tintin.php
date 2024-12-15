@@ -8,7 +8,7 @@
     'description'   => "Paiemnt de la formation: " . $element->description,
     'author'        => "Franck DAKIA"
   ])
-%endsection
+%endblock
 
 %block('style')
   <style type="text/css">
@@ -19,7 +19,7 @@
       background-size: cover !important;
     }
   </style>
-%endsection
+%endblock
 
 %block('content')
 <div class="container" style="padding: 40px;">
@@ -58,9 +58,9 @@
           <label style="margin-top: 10px">Choisisez une dévise ?</label>
           <div class="form-group select">
             <select name="currency" class="form-control" required>
-              %foreach(["XOF" => "FCFA (Ouest Afrique)", /*"XAF" => "FCFA (Centre Afrique)", "CDF" => "Franc CDF", "GNF" => "Franc guinéen", "USD" => "Dollar US"*/] as $code => $name)
+              %loop(["XOF" => "FCFA (Ouest Afrique)", /*"XAF" => "FCFA (Centre Afrique)", "CDF" => "Franc CDF", "GNF" => "Franc guinéen", "USD" => "Dollar US"*/] as $code => $name)
                 <option value="{{ $code }}" {{ old('currency') == $code ? 'selected' : '' }}>{{ $name }} ({{ $code }})</option>
-              %endforeach
+              %endloop
             </select>
             <div class="select__arrow"></div>
           </div>
@@ -74,7 +74,7 @@
     </div>
   </div>
 </div>
-%endsection
+%endblock
 
 %block('script')
 <script type="text/javascript">
@@ -97,4 +97,4 @@
     }
   });
 </script>
-%endsection
+%endblock

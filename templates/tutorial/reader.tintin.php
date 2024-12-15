@@ -11,7 +11,7 @@
     'image'         => $tutorial->cover,
     'author'        => $tutorial->author->name
   ])
-%endsection
+%endblock
 
 %block('style')
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/editor.md%1.5.0/css/editormd.min.css">
@@ -22,11 +22,11 @@
       background-color: none;
     }
   </style>
-%endsection
+%endblock
 
 %block('content')
 %include('tutorial.partials.navbar')
-%if ($form_curriculum)
+%if($form_curriculum)
   %include('tutorial.partials.description-header')
 %endif
 %include('tutorial.partials.reader-header')
@@ -38,7 +38,7 @@
         'title' => $tutorial->title,
         'url' => route('tutorial.reader', ['slug' => $tutorial->slug, 'id' => $tutorial->id])
       ])
-      %if ($tutorial->video)
+      %if($tutorial->video)
         <br>
         %include('partials.tags-sidebar', ['taggables' => $tutorial->taggables])
       %endif
@@ -49,7 +49,7 @@
           %include('partials.video', ['url' => $tutorial->video, 'mode' => 'video', 'poster' => $tutorial->cover])
         </div>
       %else
-        %if (!$form_curriculum)
+        %if(!$form_curriculum)
           <img class="img-responsive" src="{{ $tutorial->cover }}" alt="{{ $tutorial->title }}" style="max-width: auto;">
         %endif
       %endif
@@ -109,12 +109,12 @@
 
     <div class="col-xs-12 col-sm-3" style="margin-top: 10px;">
       %include('partials.ads-sider')
-      %if ($form_curriculum)
+      %if($form_curriculum)
       <div class="row">
         %auth
-          %if ($followed)
+          %if($followed)
           <div class="col-sm-12">
-            %if (!$ended)
+            %if(!$ended)
               <button class="btn btn-sm btn-block btn-danger" data-target="#valid-tutorial-progression-modal" data-toggle="modal">
                 <i class="fa fa-check"></i> &nbsp; J'ai terminé
               </button>
@@ -147,7 +147,7 @@
           </p>
           <p>
             {{ $tutorial->author->description }}
-            %if ($tutorial->author->link)
+            %if($tutorial->author->link)
               <br /><a href="{{ $tutorial->author->link }}" target="_blank">{{ $tutorial->author->link }}</a>
             %endif
           </p>
@@ -168,23 +168,23 @@
       %include('partials.tags-sidebar', ['taggables' => $tutorial->taggables, 'class' => 'nav-pills'])
     </div>
   </div>
-  %if (count($tutorials) > 0)
+  %if(count($tutorials) > 0)
   <div class="row" style="margin-top: 10px;">
     <div class="col-sm-12">
       <h3>{{ __('tutorial.latest_title') }}</h3>
-      %foreach($tutorials as $tutorial)
+      %loop($tutorials as $tutorial)
         %include('tutorial.partials.thumb', [
           'size' => 4,
           'tutorial' => $tutorial
         ])
-      %endforeach
+      %endloop
     </div>
   </div>
   %endif
 </section>
 
 %auth
-  %if ($form_curriculum)
+  %if($form_curriculum)
     %include("curriculum.partials.follow-modal")
   %endif
   %include('tutorial.modal.confirm')
@@ -194,7 +194,7 @@
     'message' => 'Voulez-vous ajouter ce tutoriel dans votre liste de favoris'
   ])
 %endif
-{## %if ($form_curriculum)
+{## %if($form_curriculum)
   %include("tutorial.modal.curriculum-sommary")
 %endif ##}
-%endsection
+%endblock

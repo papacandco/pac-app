@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
 
 class CreateTransactionsTable extends Migration
 {
@@ -11,9 +9,9 @@ class CreateTransactionsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        $this->create('transactions', function (SQLGenerator $table) {
             $table->uuid('id')->primary();
             $table->float('amount');
             $table->enum('status', ['pending', 'success', 'failed'])->default('pending');
@@ -32,8 +30,8 @@ class CreateTransactionsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('transactions');
+        $this->dropIfExists('transactions');
     }
 }

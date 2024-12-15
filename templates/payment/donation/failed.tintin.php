@@ -5,4 +5,4 @@
   <p>Désolé votre paiement ne sait pas bien passer. <a href="{{ route('donate') }}" style="text-decoration: underline">Cliquer ici si vous voulez recommancé.</a></p>
   <br/>
   <p>Merci pour votre soutient <b>{{ $transaction->user->name }}</b>. <a href="{{ app_env('APP_URL') }}" style="text-decoration: underline">Papac & Co</a></p>
-%endsection
+%endblock

@@ -19,11 +19,7 @@ class Version20190108222917CreateCommentsTable extends Migration
             $table->addString('commentable_type');
             $table->addString('user_id');
             $table->addString('user_type');
-            $table->unsignedBigInteger('parent_id')->default(0);
-            $table->ipAddress('source_ip')->nullable();
-            $table->text('source_client')->nullable();
-            $table->text('source_referer')->nullable();
-            $table->text('source_location')->nullable();
+            $table->addInteger('parent_id', ['default' => 0]);
             $table->addTimestamps();
         });
     }

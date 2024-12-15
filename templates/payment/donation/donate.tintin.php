@@ -8,7 +8,7 @@
     'description'   => "Nous sommes une petite équipe de volontaires qui s'est donnée comme mission d'aider des développeurs francophone à améliorer leur compétence en les encadrant et leurs donnant les ressources nécessaires afin d'atteindre leurs objectifs. <br>Nous apprécierons toutes contributions/dons susceptible de nous aider à rendre cela possible.",
     'author'        => "Franck DAKIA"
   ])
-%endsection
+%endblock
 
 %block('style')
   <style type="text/css">
@@ -19,7 +19,7 @@
       background-size: cover !important;
     }
   </style>
-%endsection
+%endblock
 
 %block('content')
 <div class="container" style="padding: 40px;">
@@ -67,9 +67,9 @@
           <div class="form-group select">
             <select name="country" class="form-control" required>
               <option value="">Votre pays</option>
-              %foreach(get_country_list() as $country)
+              %loop(get_country_list() as $country)
                 <option value="{{ $country->code }}" {{ old('country') == $country->code ? 'selected' : '' }}>{{ $country->name }}</option>
-              %endforeach
+              %endloop
             </select>
             <div class="select__arrow"></div>
           </div>
@@ -91,9 +91,9 @@
           <label style="margin-top: 10px">Choisisez une dévise ?</label>
           <div class="form-group select">
             <select name="currency" class="form-control" required>
-              %foreach(["XOF" => "FCFA (Ouest Afrique)", "XAF" => "FCFA (Centre Afrique)", "CDF" => "Franc CDF", "GNF" => "Franc guinéen", "USD" => "Dollar US"] as $code => $name)
+              %loop(["XOF" => "FCFA (Ouest Afrique)", "XAF" => "FCFA (Centre Afrique)", "CDF" => "Franc CDF", "GNF" => "Franc guinéen", "USD" => "Dollar US"] as $code => $name)
                 <option value="{{ $code }}" {{ old('currency') == $code ? 'selected' : '' }}>{{ $name }} ({{ $code }})</option>
-              %endforeach
+              %endloop
             </select>
             <div class="select__arrow"></div>
           </div>
@@ -113,7 +113,7 @@
     </div>
   </div>
 </div>
-%endsection
+%endblock
 
 %block('script')
 <script type="text/javascript">
@@ -136,4 +136,4 @@
     }
   });
 </script>
-%endsection
+%endblock

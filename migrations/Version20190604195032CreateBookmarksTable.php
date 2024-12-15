@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
+use Bow\Database\Migration\SQLGenerator;
 
 class Version20190604195032CreateBookmarksTable extends Migration
 {
@@ -11,17 +10,19 @@ class Version20190604195032CreateBookmarksTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('bookmarks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->morphs('bookmarkable');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-            $table->timestamps();
+        $this->create('bookmarks', function (SQLGenerator $table) {
+            $table->addIncrement('id');
+            $table->addString('bookmarkable_id');
+            $table->addString('bookmarkable_type');
+            $table->addInteger('user_id', ['unsigned' => true]);
+            $table->addForeign('user_id', [
+                'references' => 'id',
+                'table' => 'users',
+                'on' => 'on delete',
+            ]);
+            $table->addTimestamps();
         });
     }
 
@@ -30,11 +31,11 @@ class Version20190604195032CreateBookmarksTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::table('bookmarks', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
+        $this->alter('bookmarks', function (SQLGenerator $table) {
+            $table->dropForeign('user_id');
         });
-        Schema::dropIfExists('bookmarks');
+        $this->dropIfExists('bookmarks');
     }
 }

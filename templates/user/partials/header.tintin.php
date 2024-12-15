@@ -12,7 +12,7 @@
         <h2>{{ $user->name }}</h2>
         <p><b>Membre depuis {{ $user->created_at->format("d/m/Y") }}</b> - <span>{{ $user->comments()->count() }} {{ __('user.header_comment_title') }} - {{ $user->bookmarks()->count() }} {{ __('user.header_favoris_title') }}</span></p>
       </div>
-      %if ($user->isPremium())
+      %if($user->isPremium())
       <div class="col-sm-2">
         <p style="font-size: 10rem"><i class="fa fa-star text-warning"></i></p>
       </div>

@@ -13,7 +13,7 @@ $question = $forum->questions[0] ?? null;
         </strong>
       </a>
       <p style="margin-top: 10px; font-size: 12px;">
-        %if (!is_null($question))
+        %if(!is_null($question))
         <a class="text-muted" href="{{ route('forum.question', ['slug' => $forum->slug, 'question' => $question->slug, 'id' => $question->id]) }}"
           title="{{ $question->title }}">
           <img class="img-circle" src="{{ gravatar($question->author->email, 60) }}" style="width: 20px; height: 20px; background-color: #eee"> {{ str_limit($question->title, 25) }}

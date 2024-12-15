@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
 
 class CreateDonationsTable extends Migration
 {
@@ -11,9 +9,9 @@ class CreateDonationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('donations', function (Blueprint $table) {
+        $this->create('donations', function (SQLGenerator $table) {
             $table->bigIncrements('id');
             $table->string('order_id')->unique();
             $table->string('amount');
@@ -39,8 +37,8 @@ class CreateDonationsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('donations');
+        $this->dropIfExists('donations');
     }
 }

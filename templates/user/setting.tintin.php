@@ -31,13 +31,13 @@
         </div>
         <div class="form-group select">
           <select name="country" class="form-control" required>
-            %foreach(get_country_list() as $country)
+            %loop(get_country_list() as $country)
               <option value="{{ $country->code }}" {{ $user->country == $country->code ? 'selected' : '' }}>{{ $country->name }}</option>
-            %endforeach
+            %endloop
           </select>
           <div class="select__arrow"></div>
         </div>
-        %if ($user->provider_type && is_null($user->password))
+        %if($user->provider_type && is_null($user->password))
         <div class="form-group">
           <div class="alert alert-info bg-white">
             {{{ __('user.update_password_with_provider', ['type' => $user->provider_type ]) }}}
@@ -67,8 +67,8 @@
     </div>
   </div>
 </section>
-%endsection
+%endblock
 
 %block('script')
   <script style="text/javascript" src="/js/user-setting.js"></script>
-%endsection
+%endblock

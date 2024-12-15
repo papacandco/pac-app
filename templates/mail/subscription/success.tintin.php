@@ -27,4 +27,4 @@
   <br />
 
   <p>Cordialement</p>
-%endsection
+%endblock

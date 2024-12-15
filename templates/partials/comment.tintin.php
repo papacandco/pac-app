@@ -11,7 +11,7 @@
       class="img-circle img-responsive" style="width: 25px; display: inline-block; background-color: #eee">
     {{ str_words($comment->content, 50, '...') }} <br>
     <span class="text-muted">
-      %if ($comment->isForTutorial())
+      %if($comment->isForTutorial())
       <a href="{{ route('tutorial.reader', [
           'slug' => $comment->commentable->slug,
           'id' => $comment->commentable->id

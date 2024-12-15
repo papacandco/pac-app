@@ -4,12 +4,12 @@
 
 %block('style')
   %include('partials.spinner')
-%endsection
+%endblock
 
 %block('description')
   <meta name="description" content="{{ __('tutorial.title') }}">
   <meta name="author" content="Franck DAKIA">
-%endsection
+%endblock
 
 %block('seo')
   %include('partials.seo', [
@@ -17,7 +17,7 @@
     'description'   => __('tutorial.description'),
     'image'         => app_env('APP_URL'). "/img/brand/logo.png",
   ])
-%endsection
+%endblock
 
 %block('content')
 %include('tutorial.partials.header')
@@ -35,7 +35,7 @@
         %empty
           %include('partials.no-data', ['message' => __('tutorial.no_data')])
         %endforelse
-        %if ($tutorials->hasPages())
+        %if($tutorials->hasPages())
           <div id="tutorial-root"></div>
         %endif
       </div>
@@ -50,10 +50,10 @@
     </aside>
   </div>
 </section>
-%endsection
+%endblock
 
 %block('script')
-  %if ($tutorials->hasPages())
+  %if($tutorials->hasPages())
   <script src="/js/react/tutorial.js"></script>
   %endif
-%endsection
+%endblock

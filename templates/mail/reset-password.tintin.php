@@ -12,4 +12,4 @@
   {{ __('Ce lien de réinitialisation de mot de passe expirera dans :count minutes', ['count' => $count]) }}.
 </p>
 %include('mail.reject-message')
-%endsection
+%endblock

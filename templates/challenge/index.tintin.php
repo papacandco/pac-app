@@ -9,7 +9,7 @@
 <meta name="twitter:title" content="{{ __('challenge.title') }}">
 <meta name="twitter:description" content="{{ __('challenge.description') }}">
 <meta name="twitter:image" content="{{ app_env('APP_URL') }}/img/brand/logo.png">
-%endsection
+%endblock
 
 %block('facebook')
 <meta property="og:url" content="{{ route('challenge') }}">
@@ -21,7 +21,7 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-%endsection
+%endblock
 
 %block('content')
 %include('challenge.partials.header')
@@ -37,7 +37,7 @@
         <li class="active">Challenges</li>
       </ul>
       <div class="row">
-        %if ($current_challenge)
+        %if($current_challenge)
         <div class="col-sm-12">
           %include('partials.video', ['url' => $current_challenge->video, 'mode' => 'video'])
           <br>
@@ -52,7 +52,7 @@
         </div>
         %endif
         <div class="col-sm-12">
-          %if (count($challenges) > 0)
+          %if(count($challenges) > 0)
           <h3>Retrouvez les challenges précédents</h3>
           %endif
           <div class="row">
@@ -73,4 +73,4 @@
     </aside>
   </div>
 </section>
-%endsection
+%endblock

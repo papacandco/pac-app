@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
 
 class CreateCurriculumsTable extends Migration
 {
@@ -11,9 +9,9 @@ class CreateCurriculumsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('curriculums', function (Blueprint $table) {
+        $this->create('curriculums', function (SQLGenerator $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('slug')->unique();
@@ -44,8 +42,8 @@ class CreateCurriculumsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('curriculums');
+        $this->dropIfExists('curriculums');
     }
 }

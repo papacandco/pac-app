@@ -22,7 +22,7 @@
   </div>
 </section>
 %include('user.modal.delete')
-%endsection
+%endblock
 
 %block('script')
 <script style="text/javascript">
@@ -40,4 +40,4 @@
   });
 
 </script>
-%endsection
+%endblock

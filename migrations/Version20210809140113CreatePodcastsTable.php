@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
 
 class CreatePodcastsTable extends Migration
 {
@@ -11,9 +9,9 @@ class CreatePodcastsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('podcasts', function (Blueprint $table) {
+        $this->create('podcasts', function (SQLGenerator $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('description', 300);
@@ -42,12 +40,12 @@ class CreatePodcastsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::table('podcasts', function (Blueprint $table) {
+        $this->alter('podcasts', function (SQLGenerator $table) {
             $table->dropForeign(['author_id']);
         });
 
-        Schema::dropIfExists('podcasts');
+        $this->dropIfExists('podcasts');
     }
 }

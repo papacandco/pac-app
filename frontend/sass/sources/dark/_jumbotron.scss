@@ -1,0 +1,22 @@
+.jumbotron {
+  h1 {
+    color: #fff !important;
+  }
+
+  &.landing-header {
+    padding: 50px;
+    color: $brand-primary !important;
+    background-color: #222222 !important;
+  }
+}
+
+.btn.btn-lead {
+  color: $btn-primary-color;
+  background-color: darken($btn-primary-bg, 10%);
+  border-color: darken($btn-primary-border, 12%);
+}
+
+.landing-about {
+  background-color: #282828 !important;
+  color: #fff !important;
+}

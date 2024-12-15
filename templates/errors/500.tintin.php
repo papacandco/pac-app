@@ -3,4 +3,4 @@
 %block('error')
   <h1>500</h1>
   <p>{{{ __('error.500') }}}</p>
-%endsection
+%endblock

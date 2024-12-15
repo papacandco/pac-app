@@ -14,4 +14,4 @@ Tout ça pour dire que nous somme content de voir un nouveau passionné, s'inscr
   Nous vous encourageons à regarder plusieurs fois les tutoriels et à les pratiquer en même tant que la présentation 😉.
 </p>
 %include('mail.reject-message')
-%endsection
+%endblock

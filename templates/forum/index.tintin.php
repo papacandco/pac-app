@@ -5,14 +5,14 @@
 %block('description')
 <meta name="description" content="Ici, Vous pouvez poser votre question relative à chaque thématique">
 <meta name="author" content="Franck DAKIA">
-%endsection
+%endblock
 
 %block('seo')
   %include('partials.seo', [
     'title'         => "Forum",
     'description'   => "Ici, Vous pouvez poser votre question relative à chaque thématique",
   ])
-%endsection
+%endblock
 
 %block('content')
 {## %include('forum.partials.header') ##}
@@ -60,4 +60,4 @@
     </aside>
   </div>
 </section>
-%endsection
+%endblock

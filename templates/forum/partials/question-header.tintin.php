@@ -15,9 +15,9 @@
       <div class="pull-left text-muted" style="font-weight: bold;">
         {{ $question->numberOfComment() }} <b>Réponse(s)</b>
       </div>
-      %if (auth()->check())
+      %if(auth()->check())
         <div class="pull-right">
-        %if (!auth()->user()->hasBookmarked($question))
+        %if(!auth()->user()->hasBookmarked($question))
           &nbsp;&nbsp;<a href="#" class="follow-question" data-toggle="modal" data-target="#InfoModal" data-url="{{ route('bookmark', ['id' => $question->id]) }}">Suivre</a>
         %else
           &nbsp;&nbsp;<span class="text-muted">Vous suivez cette question.</span>
@@ -25,7 +25,7 @@
         </div>
       %endif
       <div class="pull-right">
-        %if ($comment = $question->lastComment())
+        %if($comment = $question->lastComment())
         <span>
           <img class="img-circle" src="{{ gravatar($comment->user->email, 60) }}" style="width: 20px; height: 20px; display: inline-block; background-color: #eee">
         </span>
@@ -34,7 +34,7 @@
       </div>
     </div>
   </header>
-  %if (!isset($without_content))
+  %if(!isset($without_content))
   <p style="margin-top: 20px">
     %include('partials.markdown', ['content' => $question->content, 'escaped' => true])
   </p>

@@ -260,7 +260,7 @@ if (! function_exists('get_annonces')) {
     function get_annonces(): DatabaseCollection
     {
         return \App\Models\Annonce::online()
-            ->whereType(\App\Models\Annonce::ANNONCE_ADS)
+            ->where('type', \App\Models\Annonce::ANNONCE_ADS)
             ->orderBy('ended_at')->get();
     }
 }

@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
 
 class CreateGraphsTable extends Migration
 {
@@ -11,9 +9,9 @@ class CreateGraphsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('graphs', function (Blueprint $table) {
+        $this->create('graphs', function (SQLGenerator $table) {
             $table->increments('id');
             $table->morphs('graph');
             $table->unsignedInteger('section_id');
@@ -31,12 +29,12 @@ class CreateGraphsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::table('graphs', function (Blueprint $table) {
+        $this->alter('graphs', function (SQLGenerator $table) {
             $table->dropForeign(['section_id']);
             $table->dropColumn('section_id');
         });
-        Schema::dropIfExists('graphs');
+        $this->dropIfExists('graphs');
     }
 }

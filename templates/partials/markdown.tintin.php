@@ -1,10 +1,10 @@
-%php
+%raw
 if (!isset($escaped)) {
   $escaped = true;
 }
-%endphp
+%endraw
 %markdown
-%if ($escaped)
+%if($escaped)
 {{{ $content }}}
 %else
 {{{ $content }}}

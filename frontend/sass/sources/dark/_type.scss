@@ -1,0 +1,39 @@
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $headings-font-family;
+  font-weight: 400;
+  line-height: $headings-line-height;
+  color: #fff !important;
+
+  small,
+  .small {
+    font-weight: 400;
+    line-height: 1;
+    color: $headings-small-color;
+  }
+}
+
+.bg-white {
+  color: $brand-primary !important;
+  // a:not(.btn) {
+  //   color: $brand-primary !important;
+  // }
+  a.btn {
+    color: #fff !important;
+  }
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #121212 !important;
+  }
+}
+
+.user-setting {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #121212 !important;
+  }
+}
+
+.lead {
+  color: #fff !important;
+}

@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
 
 class CreateCountriesTable extends Migration
 {
@@ -11,9 +9,9 @@ class CreateCountriesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('countries', function (Blueprint $table) {
+        $this->create('countries', function (SQLGenerator $table) {
             $table->id();
             $table->string('name');
             $table->string('code');
@@ -32,8 +30,8 @@ class CreateCountriesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('countries');
+        $this->dropIfExists('countries');
     }
 }

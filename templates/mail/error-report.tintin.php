@@ -8,7 +8,7 @@
   <b>Filename</b>: {{{ $error_file }}}<br/><br/>
   <b>Line</b>: {{ $error_line }}<br/><br/>
 </p>
-%if (count($error_context) > 0)
+%if(count($error_context) > 0)
 <p>
   <b>Context</b>
   ID: {{ $error_context['id'] }}<br>
@@ -22,4 +22,4 @@
 {{{ preg_replace('/\s#/', '<br/><br/> #', $error_trace) }}}
 </p>
 %include('mail.reject-message')
-%endsection
+%endblock

@@ -9,13 +9,13 @@
         <img src="{{ $technologie->cover }}" class="no-img-bg-color img-circle img-responsive" style="display: inline-block; width: 25px; min-height: 25px;"/>
       </a>
       <ul class="nav {{ $class ?? '' }} tech-sidebar" style="margin-left: 20px">
-        %foreach($technologie->technologies as $technologie)
+        %loop($technologie->technologies as $technologie)
           <li {{{ (isset($sidebar_active) ? ($sidebar_active == $technologie->slug ? 'class="tech-sidebar-active"': '') : '') }}}>
             <a href="{{ route('technologie.index', ['technologie' => $technologie->slug]) }}">
               {{ $technologie->title }}
             </a>
           </li>
-        %endforeach
+        %endloop
       </ul>
     </li>
   %empty

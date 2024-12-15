@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
 
 class CreateActionTrackersTable extends Migration
 {
@@ -11,9 +9,9 @@ class CreateActionTrackersTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('action_trackers', function (Blueprint $table) {
+        $this->create('action_trackers', function (SQLGenerator $table) {
             $table->increments('id');
             $table->text('location');
             $table->morphs('trackable');
@@ -29,8 +27,8 @@ class CreateActionTrackersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('action_trackers');
+        $this->dropIfExists('action_trackers');
     }
 }

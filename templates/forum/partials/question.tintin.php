@@ -17,12 +17,12 @@
         <div class="bg-gray" style="position: relative; font-size: 12px; background-color: #9999">
           <div class="pull-left text-muted">
             {{ count($question->comments) . ' Réponse(s)' }}
-            %foreach($question->taggables as $taggable)
+            %loop($question->taggables as $taggable)
               <a href="{{ route('forum', ['tag' => $taggable->tag_id]) }}" class="text-info "><strong>#{{ strtolower($taggable->tag->title) }}</strong></a>
-            %endforeach
+            %endloop
           </div>
           <div class="pull-right">
-            %if ($comment = $question->lastComment())
+            %if($comment = $question->lastComment())
             <span>
               <i class="fa fa-reply"></i>&nbsp;<img class="img-circle" src="{{ gravatar($comment->user->email, 60) }}" style="width: 20px; height: 20px; display: inline-block; background-color: #eee">
             </span>

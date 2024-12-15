@@ -8,4 +8,4 @@
   <b>Size</b>: {{ $size }} Mo<br/> à <b>{{ date('d/m/Y H:i:s') }}</b><br/>
 </p>
 %include('mail.reject-message')
-%endsection
+%endblock

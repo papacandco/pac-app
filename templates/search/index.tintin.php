@@ -6,7 +6,7 @@
   %include('partials.seo', [
     'title'         => $query,
   ])
-%endsection
+%endblock
 
 %block('content')
 %include('partials.ads')
@@ -36,4 +36,4 @@
     </aside>
   </div>
 </section>
-%endsection
+%endblock

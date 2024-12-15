@@ -24,4 +24,4 @@
     </aside>
   </div>
 </section>
-%endsection
+%endblock

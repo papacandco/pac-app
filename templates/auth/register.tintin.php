@@ -46,7 +46,7 @@
     <div class="col-sm-4 col-xs-12 shadow-sm auth-form">
       %include('partials.loader')
       <h3>{{ __('register.title') }}</h3>
-      %if (session('social_error'))
+      %if(session('social_error'))
       <div class="alert alert-danger" role="alert">
         {{{ __('auth.social_error', ['name' => session('social_error')]) }}}
       </div>
@@ -63,9 +63,9 @@
         </div>
         <div class="form-group select">
           <select name="country" class="form-control" required>
-            %foreach(get_country_list() as $country)
+            %loop(get_country_list() as $country)
               <option value="{{ $country->code }}" {{ old('country') == $country->code ? 'selected' : '' }}>{{ $country->name }}</option>
-            %endforeach
+            %endloop
           </select>
           <div class="select__arrow"></div>
         </div>

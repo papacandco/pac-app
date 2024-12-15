@@ -49,7 +49,7 @@
       <td bgcolor="#FFFFFF" align="center">
         <table width="650px" cellspacing="0" cellpadding="3" class="container">
           <tr>
-            <td>%yield('content')</td>
+            <td>%inject('content')</td>
           </tr>
         </table>
       </td>

@@ -1,0 +1,10 @@
+.bookmark-item {
+  background: hsl(0, 0%, 16%) !important;
+
+  a {
+    color: #fff !important;
+    &.text-danger {
+      color: $brand-danger !important;
+    }
+  }
+}

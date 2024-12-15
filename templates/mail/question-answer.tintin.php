@@ -1,11 +1,11 @@
 %extends('mail.layout')
 
-%php
+%raw
 $route = route('forum.question', [
   'slug' => $question->slug,
   'id' => $question->id
 ]);
-%endphp
+%endraw
 
 %block('content')
 {{ get_greeting_by_time() }} <b>{{ $question->author->name }}</b>,
@@ -16,4 +16,4 @@ $route = route('forum.question', [
 	<img src="{{ gravatar($comment->user->email, 20) }}" style="border-radius: 100px; position: relative; top: -5px; margin-right: 4px;"> {{ $comment->content }}
 </p>
 %include('mail.reject-message')
-%endsection
+%endblock

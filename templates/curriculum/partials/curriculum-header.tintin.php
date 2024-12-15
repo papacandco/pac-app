@@ -15,16 +15,16 @@
           style="width: 70px; height: 70px; position: relative; top: 0px;">
         <h2 style="font-size: 25px; font-weight: 700;">{{ $curriculum->title }}</h2>
         <p>{{ $curriculum->description }}</p>
-        %php $part = explode(' ', $curriculum->duration); %endphp
+        %raw $part = explode(' ', $curriculum->duration); %endraw
         <div class="row">
           <div class="col-xs-12 col-sm-8" style="position: relative; top: 8px">
             <p><b style="font-weight: bold">{{ $part[0] }} {{ strtolower($part[1]) }} de vidéos</b> &bull; <b style="font-weight: bold">{{ \App\Models\Curriculum::LEVEL[$curriculum->level] }}</b> %auth&bull; <b style="font-weight: bold">Terminé à {{ $curriculum->computeProgression(auth()->user()) }}%</b>%endauth</p>
           </div>
           <div class="col-xs-12 col-sm-4" style="position: relative; top: 8px">
-            %if ($curriculum->isOneTimePayment())
+            %if($curriculum->isOneTimePayment())
               <strong><i class="fa fa-star text-warning" title="Premium"></i> &nbsp; {{ $curriculum->price }} FCFA</strong>
             %endif
-            %if ($curriculum->isPremium())
+            %if($curriculum->isPremium())
               <strong><i class="fa fa-star text-warning" title="Premium"></i> &nbsp; Premium</strong>
             %endif
           </div>
@@ -32,7 +32,7 @@
         <div class="row">
           <div class="col-sm-6" style="padding: 10px; margin-top: 10px">
             %auth
-              %if ($followed)
+              %if($followed)
                 <a class="btn btn-danger" href="{{ route('tutorial.reader', ['slug' => $tutorial->slug, 'id' => $tutorial->id]) }}#pager-{{ $tutorial->id }}">
                   Continuer la formation
                 </a>

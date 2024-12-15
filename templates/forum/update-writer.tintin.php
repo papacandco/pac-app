@@ -4,7 +4,7 @@
 
 %block('style')
   %include("forum.partials.editor-css")
-%endsection
+%endblock
 
 %block('content')
 %include('partials.ads')
@@ -40,7 +40,7 @@
     </aside>
   </div>
 </section>
-%endsection
+%endblock
 
 %block('script')
   %include('partials.editor-script')
@@ -48,4 +48,4 @@
   <script>
     $("#tags_id").select2({ placeholder: "Ajouter des tags" });
   </script>
-%endsection
+%endblock

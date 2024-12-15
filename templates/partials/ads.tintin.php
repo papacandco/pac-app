@@ -1,10 +1,10 @@
-%php
+%raw
 $annonces = get_annonces();
-%endphp
+%endraw
 
-%if (count($annonces) > 0)
+%if(count($annonces) > 0)
 <div id="ads-carousel" class="owl-carousel" style="height: auto !important">
-  %foreach($annonces as $ads)
+  %loop($annonces as $ads)
   <div class="container-fluid bg-blue" style="background: {{ $ads->bg_color }} !important; min-height: 50px !important; max-height: 50px !important">
     <div class="container text-center hidden-xs">
       <span class="pull-right text-white label label-primary" style="background: #151515">Ads</span>
@@ -24,6 +24,6 @@ $annonces = get_annonces();
       <div class="visible-xs" style="margin-bottom: 10px"></div>
     </div>
   </div>
-  %endforeach
+  %endloop
 </div>
 %endif

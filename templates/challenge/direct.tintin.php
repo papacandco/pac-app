@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/monokai-sublime.min.css" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js">
 </script>
-%endsection
+%endblock
 
 %block('content')
 <div class="container-fluid bg-primary video-mobile min-vh-100"
@@ -32,13 +32,13 @@
     <div class="col-sm-3">
       <div class="row" id="curriculum-video-list"
         style="overflow-y: scroll; padding: 5px; padding-bottom: 10px; padding-top: 20px;">
-        %foreach(range(0, 10) as $item)
+        %loop(range(0, 10) as $item)
         <div class="col-sm-12" id="curriculum-video">
           %include('challenge.partials.message')
         </div>
-        %endforeach
+        %endloop
       </div>
     </div>
   </div>
 </div>
-%endsection
+%endblock

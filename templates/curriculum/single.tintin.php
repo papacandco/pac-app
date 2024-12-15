@@ -8,7 +8,7 @@
     'description'   => $curriculum->description,
     'image'         => $curriculum->cover ?? config('meta.image')
   ])
-%endsection
+%endblock
 
 %block('content')
 %include('curriculum.partials.curriculum-header')
@@ -19,7 +19,7 @@
         %include('partials.video', ['url' => $curriculum->video, 'mode' => 'video'])
       </div>
       <div class="row" style="margin-top: 18px;">
-        %if (strlen($curriculum->long_description) > 0)
+        %if(strlen($curriculum->long_description) > 0)
         <div class="col-sm-12 text-justify" style="padding: 2px">
           %include('partials.markdown', ['content' => $curriculum->long_description])
         </div>
@@ -28,9 +28,9 @@
           %forelse($curriculum->sections as $key => $section)
             <h3><span class="font-weight-bold">Chapitre {{ $key + 1 }} </span> - {{ $section->title }}</h3>
             <p class="text-muted">{{ $section->description }}</p>
-            %foreach($section->tutorials as $tutorial)
+            %loop($section->tutorials as $tutorial)
               %include('curriculum.partials.tutorial', ['tutorial' => $tutorial, 'size' => 6])
-            %endforeach
+            %endloop
           %empty
             %include('partials.no-data', ['message' => __('tutorial.no_data')])
           %endforelse
@@ -53,7 +53,7 @@
       </div>
       <br />
       %include('partials.ads-sider')
-      %if ($curriculum->with_forum)
+      %if($curriculum->with_forum)
         <div class="row">
           <div class="col-sm-12">
             %include('partials.forum', [
@@ -73,4 +73,4 @@
     </aside>
   </div>
 </section>
-%endsection
+%endblock

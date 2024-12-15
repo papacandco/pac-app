@@ -20,14 +20,14 @@
         <label class="control-label">Tags</label>
         <div class="form-group select">
           <select id="tags_id" name="tags_id[]" class="form-control" style="color: #000 !important" multiple required>
-            %foreach(get_technologies() as $technologie)
+            %loop(get_technologies() as $technologie)
               <optgroup label="{{ $technologie->title }}">
                 <option value="{{ $technologie->id }}" {{ isset($tags) && in_array($technologie->id, $tags) ? "selected" : "" }}>{{ $technologie->title }}</option>
-                %foreach($technologie->technologies as $technologie)
+                %loop($technologie->technologies as $technologie)
                   <option value="{{ $technologie->id }}" {{ isset($tags) && in_array($technologie->id, $tags) ? "selected" : "" }}>{{ $technologie->title }}</option>
-                %endforeach
+                %endloop
               </optgroup>
-            %endforeach
+            %endloop
           </select>
           <div class="select__arrow"></div>
         </div>

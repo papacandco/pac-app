@@ -1,0 +1,87 @@
+//
+// Jumbotron
+// --------------------------------------------------
+
+.btn.btn-lead {
+  color: $btn-primary-color;
+  background-color: darken($btn-primary-bg, 10%);
+  border-color: darken($btn-primary-border, 12%);
+}
+
+.jumbotron {
+  padding-top: $jumbotron-padding;
+  padding-bottom: $jumbotron-padding;
+  color: $jumbotron-color;
+  background-color: $jumbotron-bg !important;
+  &.jumbotron-gradient {
+    background: linear-gradient(90deg, rgba(20, 28, 113, 1) 2%, rgba(20, 69, 113, 1) 26%, rgba(20, 50, 113, 1) 100%);
+  }
+  &.landing-header {
+    padding: 50px;
+    color: $brand-primary !important;
+    background-color: #fff !important;
+    // height: 100vh;
+    h1 {
+      font-size: 64px;
+      font-weight: bold;
+      @media (max-width: $screen-xs-max) {
+        font-size: 54px;
+      }
+    }
+    .btn-lead {
+      @media (max-width: $screen-xs-max) {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+
+  &.landing-responsive {
+    @media (max-width: $screen-xs-max) {
+      padding: unset;
+      padding-top: 30px;
+      padding-bottom: 60px;
+    }
+  }
+  &.jumbotron-gray {
+    background-color: #f4f4ee !important; // #CCCDCF
+    color: $brand-primary !important;
+  }
+
+  p {
+    margin-bottom: ($jumbotron-padding / 2);
+    font-size: $jumbotron-font-size;
+    font-weight: 120;
+  }
+
+  > hr {
+    border-top-color: darken($jumbotron-bg, 10%);
+  }
+
+  .container &,
+  .container-fluid & {
+    padding-right: ($grid-gutter-width / 2);
+    padding-left: ($grid-gutter-width / 2);
+    border-radius: $border-radius-large; // Only round corners at higher resolutions if contained in a container
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding-top: ($jumbotron-padding * 1.6);
+    padding-bottom: ($jumbotron-padding * 1.6);
+
+    .container &,
+    .container-fluid & {
+      padding-right: ($jumbotron-padding * 2);
+      padding-left: ($jumbotron-padding * 2);
+    }
+
+    // h1,
+    // .h1 {
+    //   font-size: $jumbotron-heading-font-size;
+    // }
+  }
+}

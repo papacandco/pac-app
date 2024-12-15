@@ -1,0 +1,194 @@
+//
+// Utility classes
+// --------------------------------------------------
+
+@import "utilities/borders";
+@import "utilities/shadows";
+@import "utilities/sizing";
+@import "utilities/background";
+
+// Floats
+// -------------------------
+
+.clearfix {
+  @include clearfix;
+}
+.center-block {
+  @include center-block;
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+
+
+// Toggling content
+// -------------------------
+
+// Note: Deprecated .hide in favor of .hidden or .sr-only (as appropriate) in v3.0.1
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.invisible {
+  visibility: hidden;
+}
+.text-hide {
+  @include text-hide;
+}
+
+
+// Hide from screenreaders and browsers
+//
+// Credit: HTML5 Boilerplate
+
+.hidden {
+  display: none !important;
+}
+
+
+// For Affix plugin
+// -------------------------
+
+.affix {
+  position: fixed;
+}
+
+.pulsate-fwd {
+  -webkit-animation: pulsate-fwd 0.5s ease-in-out infinite both;
+  animation: pulsate-fwd 0.5s ease-in-out infinite both;
+  color: $brand-danger;
+}
+
+/**
+ * ----------------------------------------
+ * animation pulsate-fwd
+ * ----------------------------------------
+ */
+@-webkit-keyframes pulsate-fwd {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes pulsate-fwd {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.bg-light-blue {
+  background: #deebff;
+}
+
+.bg-light-dark {
+  background: #2c2c2c;
+}
+
+.bg-light-gray {
+  background: #deebff;
+}
+
+.announcement {
+  box-shadow: $box-shadow-lg !important;
+  line-height: 26px;
+  margin: 0 0 10px;
+  padding: 0 12px 0 5px;
+  border-radius: 15px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: calc(100% + 20px * 2);
+  font-size: 12px;
+  text-decoration: none;
+  background: #fff;
+  width: auto;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &::after {
+    content: "\27A2";
+    font: normal 16px Ubuntu;
+    position: relative;
+    bottom: 1px;
+  }
+
+  .new-pill {
+    padding: 2px 6px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    background: #2c2c2c;
+    border-radius: 10px;
+    color: white;
+  }
+
+  .message {
+    margin: 0 7px 0 6px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin: 0 12px;
+    strong {
+      font-weight: normal;
+      color: #181818;
+    }
+  }
+
+  a {
+    color: $brand-blue;
+  }
+}
+
+.empty-data {
+  text-align: center;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 40px;
+  color: #999;
+}
+
+.border-color-primary {
+  border: $brand-primary;
+}
+
+@each $size in 1, 2, 3, 4 {
+  .border-#{$size} {
+    border: #{$size}px solid;
+  }
+}
+
+.background-blur {
+  filter: blur(5px);
+}
+
+.datepicker {
+  z-index: 10000;
+}

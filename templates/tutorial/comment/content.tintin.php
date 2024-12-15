@@ -10,7 +10,7 @@
   <strong>{{ ucwords($comment->user->name) }}</strong>
   <p style="margin-top: 10px">%include('partials.markdown', ['content' => $comment->content])</p>
   <div class="pull-right">
-    %if (auth()->check() && $comment->user_id == auth()->id())
+    %if(auth()->check() && $comment->user_id == auth()->id())
     <a href="#"
       style="font-size: 13px;"
       data-comment="{{ $comment->id }}"

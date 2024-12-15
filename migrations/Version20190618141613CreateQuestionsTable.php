@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
+use Bow\Database\Migration\SQLGenerator;
 
 class CreateQuestionsTable extends Migration
 {
@@ -11,9 +10,9 @@ class CreateQuestionsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('questions', function (Blueprint $table) {
+        $this->create('questions', function (SQLGenerator $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('slug')->unique();
@@ -36,12 +35,12 @@ class CreateQuestionsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::table('questions', function (Blueprint $table) {
+        $this->alter('questions', function (SQLGenerator $table) {
             $table->dropForeign(['category_id']);
         });
 
-        Schema::dropIfExists('questions');
+        $this->dropIfExists('questions');
     }
 }

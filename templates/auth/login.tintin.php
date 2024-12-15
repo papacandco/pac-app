@@ -46,12 +46,12 @@
     <div class="col-sm-4 col-xs-12 shadow-sm auth-form animated fadeInRight" style="padding: 30px">
       %include('partials.loader')
       {## <h3>{{ __('auth.login_title') }}</h3> ##}
-      %if (old('email'))
+      %if(old('email'))
       <div class="alert alert-danger" role="alert">
         {{ __('auth.login_fail') }}
       </div>
       %endif
-      %if (session('social_error'))
+      %if(session('social_error'))
       <div class="alert alert-danger" role="alert">
         {{{ __('auth.social_error', ['name' => session('social_error')]) }}}
       </div>

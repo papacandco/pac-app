@@ -6,4 +6,4 @@
   <p>{{{ nl2br($transaction->target->description) }}}</p>
   <br/>
   <p><a href="/" style="text-decoration: underline">Papac & Co</a></p>
-%endsection
+%endblock

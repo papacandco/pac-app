@@ -7,7 +7,7 @@
     'title'         => __('curriculum.title'),
     'description'   => __('curriculum.description')
   ])
-%endsection
+%endblock
 
 %block('content')
 %include('curriculum.partials.header')
@@ -32,4 +32,4 @@
     </aside>
   </div>
 </section>
-%endsection
+%endblock

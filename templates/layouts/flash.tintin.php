@@ -10,7 +10,7 @@
     </div>
   </div>
 </div>
-%if (session()->has('success'))
+%if(session()->has('success'))
   <div class="modal animated fadeIn" id="flash-session" tabindex="-1">
     <div class="modal-dialog modal-sm text-center" role="document">
       <div class="modal-content">

@@ -1,4 +1,4 @@
-%php $active = \Route::currentRouteName() ?? 'tutorial'; %endphp
+%raw $active = \Route::currentRouteName() ?? 'tutorial'; %endraw
 <ul class="nav {{ $class ?? '' }} tech-sidebar">
   <li class="{{ $active == 'tutorial' ? 'active tech-sidebar-active' : '' }}">
     <a href="{{ route('tutorial') }}">{{ __('navbar.tutorial') }}</a>

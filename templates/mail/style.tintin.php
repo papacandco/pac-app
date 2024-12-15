@@ -276,4 +276,4 @@ img {
   font-size: 15px;
   text-align: center;
 }
-%endsection
+%endblock

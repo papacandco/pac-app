@@ -5,7 +5,7 @@
 %block('description')
 <meta name="description" content="{{ $technologie->title }}">
 <meta name="author" content="Franck DAKIA">
-%endsection
+%endblock
 
 %block('seo')
   %include('partials.seo', [
@@ -13,33 +13,37 @@
     'description'   => $technologie->description,
     'image'         => $technologie->cover
   ])
-%endsection
+%endblock
 
 %block('style')
-  <style type="text/css">
-    %auth
-      %if (auth()->user()->theme)
-      .navbar-default .navbar-nav > .active > a {
-        color: #fff !important;
-        background-color: #282828 !important;
-        font-weight: bold;
-      }
-      %else
-      .navbar-default .navbar-nav > .active > a {
-        color: #151515;
-        background-color: #eee;
-        font-weight: bold;
-      }
-      %endif
+  %auth
+    %if(auth()->user()->theme)
+      <style type="text/css">
+        .navbar-default .navbar-nav > .active > a {
+          color: #fff !important;
+          background-color: #282828 !important;
+          font-weight: bold;
+        }
+      </style>
     %else
+      <style type="text/css">
+        .navbar-default .navbar-nav > .active > a {
+          color: #151515;
+          background-color: #eee;
+          font-weight: bold;
+        }
+      </style>
+    %endif
+  %else
+    <style type="text/css">
       .navbar-default .navbar-nav > .active > a {
         color: #151515;
         background-color: #eee;
         font-weight: bold;
       }
-    %endauth
-  </style>
-%endsection
+    </style>
+  %endauth
+%endblock
 
 %block('content')
 %include('partials.ads')
@@ -70,4 +74,4 @@
     </aside>
   </div>
 </section>
-%endsection
+%endblock

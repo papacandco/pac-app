@@ -1,4 +1,4 @@
-%if (!isset($without_title))
+%if(!isset($without_title))
 <p>
   <span class="font-weight-bolder">Partagez</span>
 </p>

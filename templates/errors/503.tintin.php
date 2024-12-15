@@ -8,4 +8,4 @@
       <img src="/img/misc/traffic-cone.svg" class="no-img-bg-color" style="width: 85px">
     </div>
   </div>
-%endsection
+%endblock

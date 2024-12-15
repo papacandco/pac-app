@@ -53,9 +53,9 @@ class Annonce extends Model
      *
      * @return Builder
      */
-    public function scopeOnline(Builder $query)
+    public static function online()
     {
-        return $query->where('online', 1);
+        return static::where('online', 1);
     }
 
     /**

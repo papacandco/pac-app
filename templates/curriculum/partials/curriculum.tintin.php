@@ -32,7 +32,7 @@
         <a href="{{ route('curriculum.single', ['slug' => $curriculum->slug]) }}">
           {{ $curriculum->title }}
         </a>
-        %if ($curriculum->isPremium())
+        %if($curriculum->isPremium())
           &nbsp; <i class="fa fa-star text-warning" title="Premium"></i> &nbsp; Premium
         %endif
       </strong>

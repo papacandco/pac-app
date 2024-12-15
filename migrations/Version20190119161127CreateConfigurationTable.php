@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
+use Bow\Database\Migration\SQLGenerator;
 
 class Version20190119161127CreateConfigurationTable extends Migration
 {
@@ -11,17 +10,17 @@ class Version20190119161127CreateConfigurationTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('configurations', function (Blueprint $table) {
-            $table->string('name');
-            $table->string('username');
-            $table->string('email');
-            $table->string('password');
-            $table->tinyInteger('mode')->default(0);
-            $table->tinyInteger('alert')->default(0);
-            $table->string('about_video')->nullable();
-            $table->timestamps();
+       $this->create('configurations', function (SQLGenerator $table) {
+            $table->addString('name');
+            $table->addString('username');
+            $table->addString('email');
+            $table->addString('password');
+            $table->addTinyInteger('mode', ['default' => 0]);
+            $table->addTinyInteger('alert', ['default' => 0]);
+            $table->addString('about_video', ['nullable' => true]);
+            $table->addTimestamps();
         });
     }
 
@@ -30,8 +29,8 @@ class Version20190119161127CreateConfigurationTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('configurations');
+       $this->dropIfExists('configurations');
     }
 }

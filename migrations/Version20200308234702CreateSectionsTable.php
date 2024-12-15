@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
 
 class CreateSectionsTable extends Migration
 {
@@ -11,9 +9,9 @@ class CreateSectionsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('sections', function (Blueprint $table) {
+        $this->create('sections', function (SQLGenerator $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('description', 500);
@@ -31,8 +29,8 @@ class CreateSectionsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('sections');
+        $this->dropIfExists('sections');
     }
 }

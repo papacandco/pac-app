@@ -9,12 +9,12 @@
     'image'         => $podcast->cover,
     'author'        => $podcast->author->name
   ])
-%endsection
+%endblock
 
 %block('description')
   <meta name="description" content="{{ $podcast->title }}">
   <meta name="author" content="{{ $podcast->author->name }}">
-%endsection
+%endblock
 
 %block('content')
 <div class="jumbotron jumbotron-gray text-left" style="padding-bottom: 10px">
@@ -28,7 +28,7 @@
   </div>
 
   <div class="container video-mobile">
-    %if ($podcast->isVideo())
+    %if($podcast->isVideo())
       %include('partials.video', ['url' => $podcast->source, 'mode' => 'video'])
     %else
       %include('partials.audio', ['source' => $podcast->source])
@@ -105,8 +105,8 @@
     'message' => 'Voulez-vous ajouter ce podcast dans votre liste de favoris'
   ])
 %endauth
-%endsection
+%endblock
 
 %block('script')
   <script type="text/javascript" src="/js/podcast.js"></script>
-%endsection
+%endblock

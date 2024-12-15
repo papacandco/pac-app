@@ -1,11 +1,11 @@
-%if (!Cookie::get('cookie-contract'))
+%if(!cookie('cookie-contract'))
 <div class="bg-light-blue text-center" id="cookie-contrat-message" style="padding: 5px; display: none !important;">
   {{{ __('vendor.cookie', ['route' => route('terms')]) }}}&nbsp;<a href="#" id="cookie-contrat-button" data-ajaxify="{{ route('support.accept-cookie') }}" data-ajaxify-method="post" style="text-decoration: underline" data-hidden-element="#cookie-contrat-message" data-hidden>{{ __('navbar.ok') }}</a>
 </div>
 %endif
 
 %auth
-  %if (!auth()->user()->hasVerifiedEmail())
+  %if(!auth()->user()->hasVerifiedEmail())
     <div class="bg-light-blue text-center" id="email-validation-message" style="padding: 5px">
       {{{ __('vendor.email-validation-message', ['route' => route('verification.resend')]) }}}
     </div>
@@ -39,18 +39,8 @@
         <li class="{{ $active == 'podcast' ? 'active' : '' }}">
           <a href="{{ route('podcast') }}">{{ __('navbar.podcast') }}</a>
         </li>
-{##         <li class="{{ $active == 'challenge' ? 'active' : '' }}">
-          <a href="{{ route('challenge') }}">
-            {{ __('navbar.challenge') }} %if (challenge_in_progress())<i style="position: relative; top: -1px;" class="pulsate-fwd text-danger fa fa-circle" title="Un challenge en cours actuellement"></i>%endif
-          </a>
-        </li> ##}
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        {## <li id="change-theme-button" data-is-light="false">
-          <a href="#">
-            <i class="fa fa-sun" style="width: 18px;"></i>
-          </a>
-        </li> ##}
         %guest
           <li class="{{ $active == 'login' ? 'active' : '' }}">
             <a href="{{ route('login') }}{{ get_preview_url() }}">{{ __('navbar.register') }}</a>

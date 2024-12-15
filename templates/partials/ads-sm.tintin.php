@@ -18,7 +18,7 @@
     </div>
 
     <div style="position: absolute; bottom: 5px; display: block; width: 85%;" class="text-center">
-      %if (!(strlen($ads->message) > 80))
+      %if(!(strlen($ads->message) > 80))
       <a href="{{ $ads->link }}" traget="_blank"
         class="btn btn-primary btn-block btn-outline btn-sm"
         style="position: relative; top: -5px">Voir l'annonce &nbsp; <i class="fa fa-external-link-alt"></i></a>

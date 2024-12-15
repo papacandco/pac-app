@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
+use Bow\Database\Migration\SQLGenerator;
 
 class CreateMaterialsTable extends Migration
 {
@@ -11,23 +10,18 @@ class CreateMaterialsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         // L'idee ici c'est d'avoir une historique de fichier ajouter supprimer dans le systeme
-        Schema::create('materials', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('description');
-            $table->string('url');
-            $table->string('path');
-            $table->string('filename');
-            $table->string('filesize');
-            $table->string('mimetype');
-            $table->morphs('target');
-            $table->dropColumn('target_id');
-            $table->dropColumn('target_type');
-            $table->dropColumn('url');
-            $table->string('extension')->after('mimetype');
-            $table->timestamps();
+        $this->create('materials', function (SQLGenerator $table) {
+            $table->addIncrement('id');
+            $table->addString('description');
+            $table->addString('path');
+            $table->addString('filename');
+            $table->addString('filesize');
+            $table->addString('mimetype');
+            $table->addString('extension');
+            $table->addTimestamps();
         });
     }
 
@@ -36,8 +30,8 @@ class CreateMaterialsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('materials');
+        $this->dropIfExists('materials');
     }
 }

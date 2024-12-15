@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
+use Bow\Database\Migration\SQLGenerator;
 
 class CreateTutorialsTable extends Migration
 {
@@ -11,45 +10,49 @@ class CreateTutorialsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('tutorials', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('color', 7)->nullable();
-            $table->text('content')->nullable();
-            $table->string('description');
-            $table->string('video')->nullable();
-            $table->string('cover')->nullable();
-            $table->string('duration')->nullable();
-            $table->integer('level')->default(1);
-            $table->string('request_by')->nullable();
-            $table->string('repository')->nullable();
-            $table->string('source')->nullable();
-            $table->string('pdf')->nullable();
-            $table->tinyInteger('published')->default(0);
-            $table->unsignedInteger('technology_id');
-            $table->foreign('technology_id')
-                ->references('id')
-                ->on('categories')
-                ->onDelete('cascade');
-            $table->unsignedInteger('author_id')->nullable()->before('created_at');
-            $table->foreign('author_id')
-                ->references('id')
-                ->on('authors');
-            $table->dateTime('published_at')->nullable();
-            $table->unsignedInteger('graph_id')->nullable();
-            $table->foreign('graph_id')
-                ->references('id')
-                ->on('graphs')
-                ->onDelete('set null');
-            $table->string('duration_type')->after('duration')->default('Munites');
-            $table->dateTime('published_at')->nullable()->default(null)->before('created_at');
-            $table->boolean('published')->default(false)->before('published_at');
-            $table->integer('price')->default(0);
-            $table->boolean('one_time')->default(false);
-            $table->timestamps();
+        $this->create('tutorials', function (SQLGenerator $table) {
+            $table->addIncrement('id');
+            $table->addString('title');
+            $table->addString('slug', ['unique' => true]);
+            $table->addString('color', ['nullable' => true]);
+            $table->addText('content', ['nullable' => true]);
+            $table->addString('description');
+            $table->addString('video', ['nullable' => true]);
+            $table->addString('cover', ['nullable' => true]);
+            $table->addString('duration', ['nullable' => true]);
+            $table->addInteger('level', ['default' => 1]);
+            $table->addString('request_by', ['nullable' => true]);
+            $table->addString('repository', ['nullable' => true]);
+            $table->addString('source', ['nullable' => true]);
+            $table->addString('pdf', ['nullable' => true]);
+            $table->addTinyInteger('published', ['default' => 0]);
+            $table->addInteger('technology_id', ['unsigned' => true]);
+            $table->addForeign('technology_id', [
+                'references' => 'id',
+                'table' => 'technologies',
+                'on' => 'delete cascade',
+            ]);
+            $table->addInteger('author_id', ['unsigned' => true, 'nullable' => true]);
+            $table->addForeign('author_id', [
+                'references' => 'id',
+                'table' => 'authors',
+                'on' => 'set null'
+            ]);
+            $table->addDateTime('published_at', ['nullable' => true]);
+            $table->addInteger('graph_id', ['nullable' => true, 'unsigned' => true]);
+            $table->addForeign('graph_id', [
+                'references' => 'id',
+                'table' => 'graphs',
+                'on' => 'set null'
+            ]);
+            $table->addString('duration_type', ['default' => 'm']);
+            $table->addDateTime('published_at', ['nullable' => true, 'default' => true]);
+            $table->addBoolean('published', ['default' => false]);
+            $table->addInteger('price', ['default' => true]);
+            $table->addBoolean('one_time', ['default' => false]);
+            $table->addTimestamps();
         });
     }
 
@@ -58,12 +61,12 @@ class CreateTutorialsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::table('tutorials', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
+        $this->alter('tutorials', function (SQLGenerator $table) {
+            $table->dropForeign('category_id');
         });
 
-        Schema::dropIfExists('tutorials');
+        $this->dropIfExists('tutorials');
     }
 }

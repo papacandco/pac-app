@@ -5,7 +5,7 @@
 %block('description')
 <meta name="description" content="{{ $challenge->title }}">
 <meta name="author" content="{{ $challenge->author->name }}">
-%endsection
+%endblock
 
 %block('twitter')
   <meta property="twitter:card" name="twitter:card" content="summary_large_image">
@@ -14,7 +14,7 @@
   <meta property="twitter:title" name="twitter:title" content="{{ $challenge->title }}">
   <meta property="twitter:description" name="twitter:description" content="{{ $challenge->description }}">
   <meta property="twitter:image:src" name="twitter:image:src" content="{{ $challenge->cover }}">
-%endsection
+%endblock
 
 %block('facebook')
   <meta name="og:author" property="og:author" content="{{ app_env('APP_URL') }}">
@@ -25,7 +25,7 @@
   <meta name="og:site_name" property="og:site_name" content="{{ app_env('APP_NAME') }}" />
   <meta name="og:image" property="og:image" content="{{ $challenge->cover }}">
   <meta name="og:username" property="profile:username" content="{{ app_env('APP_NAME') }}" />
-%endsection
+%endblock
 
 %include('challenge.partials.social-media')
 
@@ -35,14 +35,14 @@
     <div class="row">
       <div class="col-sm-12">
         <h1>{{ $challenge->title }}</h1>
-        %if ($challenge->isPending())
+        %if($challenge->isPending())
           <h5 class="text-muted">{{ $challenge->diffused_at->isPast() ? 'Diffusé' : 'Diffusion' }} {{ $challenge->diffused_at->diffForHumans() }}</h5>
         %endif
       </div>
     </div>
   </div>
 
-  %if ($challenge->isDiffused())
+  %if($challenge->isDiffused())
     <div class="container video-mobile">
       %include('partials.video', ['url' => $challenge->video, 'mode' => 'video'])
     </div>
@@ -97,4 +97,4 @@
     </aside>
   </div>
 </section>
-%endsection
+%endblock

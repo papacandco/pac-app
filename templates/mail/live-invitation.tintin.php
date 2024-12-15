@@ -20,5 +20,5 @@ Dans ce challenge nous allons apprendre "{{ $description }}"
   </li>
 </ul>
 %include('mail.reject-message')
-%endsection
+%endblock
 

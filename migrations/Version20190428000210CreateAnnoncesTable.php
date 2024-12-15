@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
+use Bow\Database\Migration\SQLGenerator;
 
 class CreateAnnoncesTable extends Migration
 {
@@ -11,23 +10,23 @@ class CreateAnnoncesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('annonces', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('type');
-            $table->string('message');
-            $table->string('link');
-            $table->tinyInteger('online');
-            $table->string('cover')->nullable();
-            $table->string('color')->default('#151515');
-            $table->integer('click')->default(0);
-            $table->dateTime('started_at')->nullable();
-            $table->dateTime('ended_at')->nullable();
-            $table->string('bg_color')->default('#181818');
-            $table->string('font_color')->default('#FFF');
-            $table->string('link_color')->default('#0747A6');
-            $table->timestamps();
+        $this->create('annonces', function (SQLGenerator $table) {
+            $table->addIncrement('id');
+            $table->addString('type');
+            $table->addString('message');
+            $table->addString('link');
+            $table->addTinyInteger('online');
+            $table->addString('cover', ['nullable' => true]);
+            $table->addString('color', ['default' => '#151515']);
+            $table->addInteger('click', ['default' => 0]);
+            $table->addDateTime('started_at', ['nullable' => true]);
+            $table->addDateTime('ended_at', ['nullable' => true]);
+            $table->addString('bg_color', ['default' => '#181818']);
+            $table->addString('font_color', ['default' => '#FFF']);
+            $table->addString('link_color', ['default' => '#0747A6']);
+            $table->addTimestamps();
         });
     }
 
@@ -36,8 +35,8 @@ class CreateAnnoncesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('annonces');
+        $this->dropIfExists('annonces');
     }
 }

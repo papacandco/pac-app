@@ -5,4 +5,4 @@
   <p>
     Désolé, le challenge n'est pas encore commencé. <a href="/" style="text-decoration: underline;">Papac & Co.</a>
   </p>
-%endsection
+%endblock

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 %auth
-  <html class="dark-theme" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  <html class="dark-theme" lang="{{ str_replace('_', '-', client_locale()) }}">
 %else
-  <html class="dark-theme" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  <html class="dark-theme" lang="{{ str_replace('_', '-', client_locale()) }}">
 %endauth
 <head>
   <meta charset="utf-8">
@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <link rel="stylesheet" type="text/css" href="/css/app.css" id="main-css-file">
   <link rel="stylesheet" type="text/css" href="/css/plyr/plyr.css" />
-  {## %guest
+  %guest
     <script>
       window.isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
       if (!window.isDarkMode || sessionStorage.getItem("code_learning_club_switch_to_theme") == "light") {
@@ -33,7 +33,7 @@
         document.querySelector("html").classList.add("dark-theme")
       }
     </script>
-  %endguest ##}
+  %endguest
 
   %block('seo')
     %include('meta::manager', [
@@ -88,7 +88,7 @@
     %inject('content')
   </main>
 
-  %if (!isset($isolate))
+  %if(!isset($isolate))
     %includeWhen(!isset($without_footer), 'layouts.footer')
   %else
     <div style="position: fixed; bottom: 20px; left: 10px;">%include('layouts.partials.theme-button')</div>

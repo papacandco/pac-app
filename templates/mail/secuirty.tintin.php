@@ -16,4 +16,4 @@ Navigateur: Mozilla / 5.0 (X11; Ubuntu; Linux x86_64; rv: 70.0) Gecko / 20100101
 Si c'était vous, vous pouvez ignorer cette alerte. Si vous suspectez une activité inhabituelle sur votre compte, veuillez contacter le support.
 <p>
 %include('mail.reject-message')
-%endsection
+%endblock

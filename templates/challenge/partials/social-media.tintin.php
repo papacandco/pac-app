@@ -5,7 +5,7 @@
   <meta name="twitter:title" content="{{ $challenge->title }}">
   <meta name="twitter:description" content="{{ $challenge->description }}">
   <meta name="twitter:image" content="{{ app_env('APP_ENV') }}/img/brand/codelearningclub.png">
-%endsection
+%endblock
 
 <!-- Facebook -->
 %block('facebook')
@@ -18,4 +18,4 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="150">
   <meta property="og:image:height" content="150">
-%endsection
+%endblock

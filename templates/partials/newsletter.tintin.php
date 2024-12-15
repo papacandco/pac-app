@@ -14,7 +14,7 @@
     {{ __('about.new_letter.description') }}
   </p>
   <form action="{{ route('support.newsletter') }}" method="post">
-    %php session()->put($field_name ?? 'newsletter_email_field', $secure_prefix ?? ''); %endphp
+    %raw session()->put($field_name ?? 'newsletter_email_field', $secure_prefix ?? ''); %endraw
     %csrf
     <div class="input-group">
       <input type="email" placeholder="Adresse E-mail" name="{{ $secure_prefix ?? '' }}" class="form-control" required>

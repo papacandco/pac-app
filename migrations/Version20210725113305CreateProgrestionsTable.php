@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
 
 class CreateProgrestionsTable extends Migration
 {
@@ -11,9 +9,9 @@ class CreateProgrestionsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('progrestions', function (Blueprint $table) {
+        $this->create('progrestions', function (SQLGenerator $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('timespent')->default(0);
@@ -31,8 +29,8 @@ class CreateProgrestionsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('progrestions');
+        $this->dropIfExists('progrestions');
     }
 }

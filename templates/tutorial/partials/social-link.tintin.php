@@ -1,19 +1,19 @@
 %isset($tutorial)
-  %if ($tutorial->withPdf())
+  %if($tutorial->withPdf())
   <li>
     <a href="{{ $tutorial->pdf }}" target="_blank" title="Télécharge le PDF">
       <img class="no-img-bg-color" src="/img/misc/pdf.svg" alt="Télécharge le PDF" style="width: 18px; position: relative; top: -1px;">
     </a>
   </li>
   %endif
-  %if ($tutorial->withSource())
+  %if($tutorial->withSource())
   <li>
     <a href="{{ $tutorial->source }}" target="_blank" title="Télécharge de code source">
       <img class="no-img-bg-color" src="/img/misc/download.svg" alt="Télécharge de code source" style="width: 18px; position: relative; top: -1px;">
     </a>
   </li>
   %endif
-  %if ($tutorial->withRepository())
+  %if($tutorial->withRepository())
   <li>
     <a href="{{ $tutorial->repository }}" target="_blank" title="Voir le dépôt git">
       <i class="fab fa-github text-white"></i>

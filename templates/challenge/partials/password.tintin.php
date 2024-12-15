@@ -8,7 +8,7 @@
         %csrf
         <div class="modal-body">
           <p>Entrez votre token de passage svp ?</p>
-          %if (session()->has('error'))
+          %if(session()->has('error'))
             <div class="bg-danger" style="padding: 10px; margin-bottom: 5px">
               {{{ session('error') }}}
             </div>

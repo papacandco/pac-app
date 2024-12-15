@@ -12,8 +12,8 @@
     &nbsp;
     <button style="font-size: 8px" class="btn disabled btn-primary btn-sm" id="mute-btn"><i class="fa fa-volume-up"></i></button>
     %auth("web")
-    &nbsp;
-    <button style="font-size: 8px" class="btn btn-primary btn-sm" id="bookmark-btn" data-target="#add-bookmark-modal" data-toggle="modal"><i class="fa fa-bookmark"></i></button>
+      &nbsp;
+      <button style="font-size: 8px" class="btn btn-primary btn-sm" id="bookmark-btn" data-target="#add-bookmark-modal" data-toggle="modal"><i class="fa fa-bookmark"></i></button>
     %endauth
   </div>
 </div>

@@ -15,7 +15,7 @@
   <div class="row">
     <div class="col-sm-offset-3 col-sm-6 col-xs-12 bg-white" style="padding: 40px;">
       <h3>{{ __('Vérifiez votre adresse e-mail') }}</h3>
-      %if (session('resent'))
+      %if(session('resent'))
       <div class="alert alert-success" role="alert">
         {{ __('Un nouveau lien de vérification a été envoyé à votre adresse e-mail.') }}
       </div>

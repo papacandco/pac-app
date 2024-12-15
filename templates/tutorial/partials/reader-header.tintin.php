@@ -1,4 +1,4 @@
-%if ($form_curriculum)
+%if($form_curriculum)
 {##   <div class="pull-right" style="display: inline-block; position: relative; top: 10px">
     <a href="#" class="btn btn-sm btn-danger" data-target="#curriculum-sommary-modal" data-toggle="modal">Afficher la table de matière</a>
   </div> ##}

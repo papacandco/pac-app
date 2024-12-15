@@ -2,11 +2,11 @@
   <div class="container">
     <nav class="navbar-collapse collapse" id="header-navbar">
       <ul class="nav navbar-nav">
-        %foreach(\App\Models\Technologie::all() as $technologie)
+        %loop(\App\Models\Technologie::all() as $technologie)
           <li>
             <a href="{{ route('technologie.index', ['technologie' => $technologie->slug]) }}">{{ ucfirst($technologie->title) }}</a>
           </li>
-        %endforeach
+        %endloop
       </ul>
     </nav>
   </div>

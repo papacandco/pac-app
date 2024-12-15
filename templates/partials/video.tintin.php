@@ -1,8 +1,8 @@
-%php
+%raw
 if (!isset($poster)) {
   $poster = false;
 }
-%endphp
+%endraw
 <div class="row no-gutters">
 <!--  embed-responsive embed-responsive-16by9 bg-blue  -->
   <div class="col-sm-12 col-xs-12 shadow-lg" style="{{ $style ?? '' }} padding: 0px;">

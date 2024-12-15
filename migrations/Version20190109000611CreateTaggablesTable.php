@@ -15,11 +15,13 @@ class Version20190109000611CreateTaggablesTable extends Migration
         $this->create('taggables', function (SQLGenerator $table) {
             $table->addIncrement('id');
             $table->addInteger('tag_id');
-            $table->morphs('taggable');
-            $table->foreign('tag_id')
-                ->references('id')
-                ->on('tags')
-                ->onDelete('cascade');
+            $table->addInteger('taggable_id');
+            $table->addString('taggable_type');
+            $table->addForeign('tag_id', [
+                'references' => 'id',
+                'table' => 'tags',
+                'on' => 'delete cascade'
+            ]);
         });
     }
 

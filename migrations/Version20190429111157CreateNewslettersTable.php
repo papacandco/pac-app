@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Bow\Database\Migration\Migration;
+use Bow\Database\Migration\SQLGenerator;
 
 class Version20190429111157CreateNewslettersTable extends Migration
 {
@@ -11,12 +10,12 @@ class Version20190429111157CreateNewslettersTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('newsletters', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('email');
-            $table->timestamps();
+        $this->create('newsletters', function (SQLGenerator $table) {
+            $table->addIncrement('id');
+            $table->addString('email');
+            $table->addTimestamps();
         });
     }
 
@@ -25,8 +24,8 @@ class Version20190429111157CreateNewslettersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function rollback(): void
     {
-        Schema::dropIfExists('newletters');
+        $this->dropIfExists('newletters');
     }
 }

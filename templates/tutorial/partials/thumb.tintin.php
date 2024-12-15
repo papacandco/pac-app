@@ -1,6 +1,6 @@
-%php
+%raw
 $pager = !is_null($tutorial->graph_id) ? '#pager-' . $tutorial->id : '';
-%endphp
+%endraw
 <div class="col-sm-{{ $size ?? 4 }} col-xs-12 tutorial-item" style="padding-left: 5px; padding-right: 5px; padding-bottom: 0px; margin-bottom: 10px">
   <div class="thumbnail bg-white visible-xs rounded" style="overflow: hidden !important; cursor: default; margin: 10px;">
     <a class="bg-blue" title="{{ $tutorial->title }}" href="{{ route('tutorial.reader', ['slug' => $tutorial->slug, 'id' => $tutorial->id]) }}" style="display: block; min-height: 150px">
@@ -21,10 +21,10 @@ $pager = !is_null($tutorial->graph_id) ? '#pager-' . $tutorial->id : '';
       </div>
       <p class="text-muted" style="font-size: 11px">
         Durée: <b class="text-info">{{ $tutorial->duration }}</b> &nbsp; Par <span class="text-muted">{{ $tutorial->author->name }}</span>
-        {## %if ($tutorial->isPremium())
+        {## %if($tutorial->isPremium())
           &nbsp; <span class="badge badge-warning" style="font-size: 13px;"><i class="fa fa-star text-warning" title="Premium"></i> &nbsp; Premium</span>
         %endif
-        %if ($tutorial->isOneTimePayment())
+        %if($tutorial->isOneTimePayment())
           &nbsp; <span class="badge badge-warning" style="font-size: 13px;"><i class="fa fa-star text-warning" title="Premium"></i> &nbsp; Prix: {{ $tutorial->price }} FCFA</span>
         %endif ##}
       </p>
@@ -45,10 +45,10 @@ $pager = !is_null($tutorial->graph_id) ? '#pager-' . $tutorial->id : '';
       </div>
       <p class="text-muted" style="font-size: 15px;">
         Durée: <b class="text-info">{{ $tutorial->duration }}</b>
-        {## %if ($tutorial->isPremium())
+        {## %if($tutorial->isPremium())
           &nbsp; <span class="badge badge-warning" style="font-size: 13px;"><i class="fa fa-star text-warning" title="Premium"></i> &nbsp; Premium</span>
         %endif
-        %if ($tutorial->isOneTimePayment())
+        %if($tutorial->isOneTimePayment())
           &nbsp; <span class="badge badge-warning" style="font-size: 13px;"><i class="fa fa-star text-warning" title="Premium"></i> &nbsp; Prix: {{ $tutorial->price }} FCFA</span>
         %endif ##}
       </p>

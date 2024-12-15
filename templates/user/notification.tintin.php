@@ -26,5 +26,5 @@
 
 %include("user.modal.delete-notification")
 %include("user.modal.read-notification")
-%endsection
+%endblock
 
