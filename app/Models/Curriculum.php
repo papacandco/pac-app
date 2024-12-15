@@ -23,7 +23,7 @@ class Curriculum extends Model
      *
      * @var string
      */
-    protected $table = 'curriculums';
+    protected string $table = 'curriculums';
 
     /**
      * The level of curriculum

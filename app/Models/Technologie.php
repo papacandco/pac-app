@@ -34,7 +34,7 @@ class Technologie extends Model
      *
      * @var array
      */
-    protected $hidden = ['tutorials', 'updated_at', 'created_at'];
+    protected array $hidden = ['tutorials', 'updated_at', 'created_at'];
 
     /**
      * The mutation data

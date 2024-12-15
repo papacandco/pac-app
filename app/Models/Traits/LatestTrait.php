@@ -17,7 +17,7 @@ trait LatestTrait
         $query = $this->take($limit)
             ->orderBy($order_by, 'desc');
 
-        if (get_class() == Tutorial::class) {
+        if (get_class($this) == Tutorial::class) {
             $query
                 ->select(Tutorial::SELECT_FIELD)
                 ->where('published', 1)

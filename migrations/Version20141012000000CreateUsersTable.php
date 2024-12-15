@@ -23,6 +23,9 @@ class Version20141012000000CreateUsersTable extends Migration
             $table->addString('avatar', ['nullable' => true]);
             $table->addString('provider_id', ['nullable' => true]);
             $table->addString('provider_type', ['nullable' => true]);
+            $table->boolean('theme')->default(0)->before('created_at');
+            $table->dateTime('logged_at')->nullable()->before('created_at');
+            $table->string('country')->nullable();
             $table->addTimestamps();
         });
     }

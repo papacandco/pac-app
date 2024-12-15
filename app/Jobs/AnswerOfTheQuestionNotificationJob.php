@@ -14,8 +14,6 @@ use Illuminate\Queue\SerializesModels;
 
 class AnswerOfTheQuestionNotificationJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
     /**
      * Create a new job instance.
      *
@@ -31,7 +29,7 @@ class AnswerOfTheQuestionNotificationJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function process()
     {
         if ($this->question->user_id !== $this->comment->user_id) {
             $this->question->author->notify(

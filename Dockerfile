@@ -34,4 +34,4 @@ RUN composer update
 
 EXPOSE 8000
 
-CMD [ "php", "-v" ]
+CMD [ "php", "bow", "run:server", "--port=8000" ]

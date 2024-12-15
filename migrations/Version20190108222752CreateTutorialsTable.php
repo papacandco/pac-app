@@ -29,12 +29,26 @@ class CreateTutorialsTable extends Migration
             $table->string('source')->nullable();
             $table->string('pdf')->nullable();
             $table->tinyInteger('published')->default(0);
-            $table->unsignedInteger('category_id');
-            $table->foreign('category_id')
+            $table->unsignedInteger('technology_id');
+            $table->foreign('technology_id')
                 ->references('id')
                 ->on('categories')
                 ->onDelete('cascade');
+            $table->unsignedInteger('author_id')->nullable()->before('created_at');
+            $table->foreign('author_id')
+                ->references('id')
+                ->on('authors');
             $table->dateTime('published_at')->nullable();
+            $table->unsignedInteger('graph_id')->nullable();
+            $table->foreign('graph_id')
+                ->references('id')
+                ->on('graphs')
+                ->onDelete('set null');
+            $table->string('duration_type')->after('duration')->default('Munites');
+            $table->dateTime('published_at')->nullable()->default(null)->before('created_at');
+            $table->boolean('published')->default(false)->before('published_at');
+            $table->integer('price')->default(0);
+            $table->boolean('one_time')->default(false);
             $table->timestamps();
         });
     }

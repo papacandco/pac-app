@@ -32,7 +32,7 @@ class Annonce extends Model
      *
      * @var array
      */
-    protected $dates = ['started_at', 'ended_at'];
+    protected array $dates = ['started_at', 'ended_at'];
 
     /**
      * Annonce constructor
