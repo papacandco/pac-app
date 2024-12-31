@@ -1,0 +1,50 @@
+// Mixin and adjust the regular image class
+.thumbnail {
+  display: block;
+  padding: $thumbnail-padding;
+  margin-bottom: $line-height-computed;
+  line-height: $line-height-base;
+  font-size: $blockquote-font-size - 2px;
+  background: #282828 !important;
+  // border: 1px solid $brand-blue !important;
+  border: none !important;
+  box-shadow: unset;
+  // @include transition(border .2s ease-in-out);
+
+  > img,
+  a > img {
+    @include img-responsive;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  // Image captions
+  .caption {
+    padding: $thumbnail-caption-padding;
+    color: #fff !important;// $blockquote-small-color !important;
+    background: #282828 !important;
+    strong {
+      a {
+        color: #fff !important; // #2d2d2d !important;
+      }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    // @include box-shadow(1px 2px 2px #ddd);
+    text-decoration: none;
+    // border: none;
+  }
+}
+
+// Add a hover state for linked versions only
+a.thumbnail:hover,
+a.thumbnail:focus,
+a.thumbnail.active {
+  text-decoration: none;
+  // border: none;
+}

@@ -1,0 +1,83 @@
+//
+// Code (inline and block)
+// --------------------------------------------------
+
+
+// Inline and block code styles
+code,
+kbd,
+pre,
+samp {
+  font-family: $font-family-monospace;
+}
+
+// Inline code
+code {
+  padding: 2px 4px;
+  // font-size: 90%;
+  color: #fff;// $code-color;
+  background-color: #2c2c2c;// $code-bg;
+  border-radius: $border-radius-small;
+  font-family: Monaco, 'Source Code Pro';
+  border: #2c2c2c solid 1px;
+}
+
+// User input typically entered via keyboard
+kbd {
+  padding: 1px 2px;
+  color: $kbd-color;
+  background-color: $kbd-bg;
+  border-radius: $border-radius-small;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
+
+  kbd {
+    padding: 0;
+    font-size: 100%;
+    font-weight: 700;
+    box-shadow: none;
+  }
+}
+
+// Blocks of code
+pre {
+  display: block;
+  // padding: (($line-height-computed - 1) / 2);
+  padding: 0;
+  line-height: $line-height-base;
+  color: $pre-color;
+  // word-break: break-all;
+  // word-wrap: break-word;
+  // background-color: $brand-blue;
+  font-weight: 500;
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: .3rem;
+
+  // Account for some code outputs that place code tags in pre tags
+  code {
+    // font-size: 14px;
+    color: inherit;
+    // white-space: pre-wrap;
+    background-color: transparent;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    border-radius: $border-radius-small;
+  }
+
+  code.hljs {
+    padding: 1rem;
+    border-radius: $border-radius-small;
+    // margin: .1rem -1rem 1rem;
+    overflow: auto;
+  }
+}
+
+// Enable scrollable blocks of code
+.pre-scrollable {
+  max-height: $pre-scrollable-max-height;
+  overflow-y: scroll;
+}
+
+.hljs {
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+}

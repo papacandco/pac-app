@@ -1,0 +1,154 @@
+@import "sources/dark/navbar";
+@import "sources/dark/thumbnail";
+@import "sources/dark/type";
+@import "sources/dark/media";
+@import "sources/dark/jumbotron";
+@import "sources/dark/dropdown";
+@import "sources/dark/bookmark";
+@import "sources/dark/auth";
+@import "sources/dark/forms";
+
+body {
+  background-color: $brand-primary !important;
+  color: #fff !important;
+}
+
+#cookie-contrat-message {
+  color: $dark-color;
+  a {
+    color: $brand-info !important;
+  }
+}
+
+a {
+  color: #ddd;
+  &:hover {
+    color: #eee;
+  }
+}
+
+.technologie > a {
+  background: #2a2a2a;
+}
+
+footer {
+  div.footer-presentation {
+    color: #fff !important;
+    background:  $dark-footer-color !important;
+  }
+  div.footer-copy-right {
+    background-color: $dark-footer-color !important; // $brand-info
+  }
+}
+
+.modal-body {
+  color: $dark-color !important;
+}
+
+.modal-footer {
+  a {
+    color: $brand-primary !important;
+  }
+  .popover {
+    color: $brand-primary !important;
+  }
+}
+
+.jumbotron.jumbotron-gray {
+  h1, h2 {
+    color: $dark-color !important;
+  }
+}
+
+.jumbotron.jumbotron-gray {
+  background: $brand-secondary !important;
+  color: #fff !important;
+  h1, h2 {
+    color: #fff !important;
+  }
+}
+
+.nav li.active a {
+  color: #fff !important;
+}
+
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.6;
+  background-color: #262626 !important;
+  color: #e3e3e3 !important;
+}
+
+.user-nav li.active a {
+  margin-right: 2px;
+  line-height: 1.6;
+  background-color: #262626 !important;
+  color: #e3e3e3 !important;
+}
+
+.tech-sidebar-active {
+  border-radius: 5px;
+  background-color: #282828 !important;
+}
+
+.tech-sidebar-active.active {
+  a {
+    color: $dark-color !important;
+  }
+}
+
+.user-setting {
+  color: $dark-color !important;
+  padding-bottom: 10px !important;
+  background-color: #f4f5f7 !important;
+}
+
+.curriculum-link-color, .curriculum-text-color {
+  color: #fff !important;
+}
+
+.cirruculum-header-bg-color {
+  background: #282828 !important;
+}
+
+#sub-navbar {
+  background-color: #282828 !important;
+}
+
+#curriculum-video-list {
+  background: #222 !important;
+}
+
+.paper-item {
+  background-color: #222 !important;
+  a {
+    color: #fff !important;
+  }
+  &.paper-active {
+    color: #fff !important;
+    .media-body a {
+      color: #fff !important;
+    }
+  }
+  &:hover {
+    color: #fff !important;
+    .media-body a {
+      color: #fff !important;
+    }
+  }
+  .media-object {
+    img {
+      width: 30px;
+      height: 30px
+    }
+  }
+  div strong {
+    position: relative;
+    top: 5px;
+  }
+
+  @media (max-width: $screen-sm-min) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}

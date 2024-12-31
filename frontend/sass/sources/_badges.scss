@@ -1,0 +1,107 @@
+//
+// Badges
+// --------------------------------------------------
+
+.course-metadata {
+  top: 10px;
+  right: 10px;
+  left: 10px;
+  position: absolute;
+  font-size: 0.8625rem;
+  text-transform: uppercase;
+  z-index: 3;
+  span {
+    float: left;
+    padding: 3px 8px;
+    margin: 0 0 1px 0;
+  }
+}
+
+.player-icon {
+  top: 30%;
+  left: 50%;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 1.125rem;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  transition: all 0.25s ease-out;
+  z-index: 4;
+}
+
+.course-metadata__technologie {
+  color: #E8E8E8;
+  background-color: rgba(0,0,0,0.6);
+}
+
+// Base class
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: $font-size-small;
+  font-weight: $badge-font-weight;
+  line-height: $badge-line-height;
+  color: $badge-color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: $badge-bg;
+  border-radius: $badge-border-radius;
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+
+  // Empty badges collapse automatically (not available in IE8)
+  &:empty {
+    display: none;
+  }
+
+  // Quick fix for badges in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+
+  .btn-xs &,
+  .btn-group-xs > .btn & {
+    top: 0;
+    padding: 1px 5px;
+  }
+
+  // [converter] extracted a& to a.badge
+
+  // Account for badges in navs
+  .list-group-item.active > &,
+  .nav-pills > .active > a > & {
+    color: $badge-active-color;
+    background-color: $badge-active-bg;
+  }
+
+  .list-group-item > & {
+    float: right;
+  }
+
+  .list-group-item > & + & {
+    margin-right: 5px;
+  }
+
+  .nav-pills > li > a > & {
+    margin-left: 3px;
+  }
+}
+
+// Hover state, but only for links
+a.badge {
+  &:hover,
+  &:focus {
+    color: $badge-link-hover-color;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

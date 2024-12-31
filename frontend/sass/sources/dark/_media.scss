@@ -1,0 +1,36 @@
+.media {
+  color: $brand-primary !important;
+  a {
+    color: $brand-info !important;
+  }
+}
+
+.media {
+  background-color: #282828 !important;
+  color: #fff !important;
+  border: none !important;
+  a {
+    color: #fff !important;
+  }
+  &.border-blue {
+    border-color: transparent !important;
+    border-width: 0px !important;
+  }
+  &.paper-active {
+    background-color: $brand-blue !important;
+  }
+}
+
+.curriculum-item {
+  &.border-blue {
+    border-color: #eee !important;
+    border-width: 1px !important;
+  }
+}
+
+.question-item {
+  &.border-blue {
+    border-color: #eee !important;
+    border-width: 1px !important;
+  }
+}

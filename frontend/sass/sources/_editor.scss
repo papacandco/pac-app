@@ -1,0 +1,59 @@
+.editor-toolbar {
+  position: relative;
+  opacity: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  padding: 0 5px;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+  &.fullscreen {
+    z-index: 1000000;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.CodeMirror {
+  border: 0;
+  border-top: 2px solid #eee
+}
+
+.CodeMirror-fullscreen, .editor-preview-side {
+  z-index: 1000000;
+}
+
+.editor-toolbar a {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none !important;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+
+  &:hover {
+    color: $brand-primary;
+  }
+}
+
+.editor-toolbar {
+  .fa {
+    display: inline-block;
+    font: normal normal normal 14px;
+    font-size: 13px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

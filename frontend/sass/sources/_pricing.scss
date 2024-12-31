@@ -1,0 +1,73 @@
+
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.pricing-area {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.pricing-area.pricing-radius {
+  border-radius: 30px;
+}
+
+.pricing-area>div {
+  padding: 0;
+}
+
+.pricing-area .pricing {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  transition: all 0.4s;
+  padding: 20px 0px;
+  height: 70vh;
+}
+
+.pricing-area .pricing h6 {
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.pricing-area .pricing h1 {
+  font-size: 64px;
+  font-weight: 100;
+  line-height: 72px;
+}
+
+.pricing-area .pricing h1 sup {
+  font-size: 30px;
+  top: -30px;
+}
+
+.pricing-area .pricing ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-area .pricing ul li {
+  line-height: 45px;
+  border-bottom: 0px;
+}
+
+.pricing-area .pricing:hover {
+  background: #179880;
+  transition: all 0.4s;
+}
+
+.pricing-area .pricing.active {
+  background: #144571;
+}
+
+.pricing-area .pricing.active,
+.pricing-area .pricing.active ul li,
+.pricing-area .pricing:hover.pricing,
+.pricing-area .pricing:hover.pricing ul li {
+  color: #fff;
+}

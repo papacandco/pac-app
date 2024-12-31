@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist&family=Roboto&display=swap');
+// @import "sources/muli_font";
+@import "sources/scandia-web";
+
+// Core variables and mixins
+@import "sources/variables";
+@import "sources/mixins";
+
+// Core CSS
+@import "sources/scaffolding";
+@import "sources/type";
+@import "sources/code";
+@import "sources/grid";
+@import "sources/tables";
+@import "sources/forms";
+@import "sources/buttons";
+
+// Components
+@import "sources/component-animations";
+@import "sources/dropdowns";
+@import "sources/button-groups";
+@import "sources/input-groups";
+@import "sources/navs";
+@import "sources/navbar";
+@import "sources/breadcrumbs";
+@import "sources/pagination";
+@import "sources/pager";
+@import "sources/labels";
+@import "sources/badges";
+@import "sources/jumbotron";
+@import "sources/thumbnails";
+@import "sources/alerts";
+@import "sources/progress-bars";
+@import "sources/media";
+@import "sources/list-group";
+@import "sources/responsive-embed";
+@import "sources/responsive-utilities";
+@import "sources/close";
+@import "sources/utilities";
+
+// Components w/ JavaScript
+@import "sources/modals";
+@import "sources/tooltip";
+@import "sources/popovers";
+
+// Personal
+@import "sources/editor";
+@import "sources/custom";
+@import "sources/notification";
+@import "sources/mobile";
+@import "sources/technologie";
+@import "sources/pricing";
+
+.auth-form {
+  background-color: #fff !important;
+}
+
+footer {
+  div.footer-presentation {
+    color: #101010 !important;
+    background: #fff !important;
+  }
+  div.footer-copy-right {
+    background-color: $brand-info !important;
+  }
+}
+
+.tech-sidebar li {
+  margin-top: 2px !important;
+}
+
+.tech-sidebar-active {
+  // background-color: #eee !important;
+  border-right: 4px solid $brand-danger !important;
+}
+
+.navbar-collapse.collapse.in {
+  background: #fff !important;
+}
+
+.curriculum-link-color {
+  color: $brand-blue !important;
+}
+
+.cirruculum-header-bg-color {
+  background: #f4f4ee !important;
+}
+
+.curriculum-text-color {
+  color: $brand-primary !important;
+}
+
+html.dark-theme {
+  @import "./dark-theme";
+}
+
+#tutorial-header {
+  background: $brand-blue !important;
+}
+
+#reader-content {
+  & p, & ul {
+    margin-bottom: 30px !important;
+    line-height: 1.7;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #777;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+#noscript-warning {
+  font-family: sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5050;
+  text-align: center;
+  font-weight: bold;
+  font-size: 120%;
+  color: #fff;
+  background-color: #c02d2e;
+  padding: 5px 0;
+}
+
+.empty-data-container {
+  margin-bottom: 70px;
+  margin-top: 70px;
+  padding: 30px;
+}

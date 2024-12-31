@@ -1,0 +1,5 @@
+<phpunit colors="true" bootstrap="tests/bootstrap.php">
+    <testsuite name="Bow Framework Application Testsuite">
+        <directory suffix=".php">tests/</directory>
+    </testsuite>
+</phpunit>
