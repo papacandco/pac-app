@@ -3,7 +3,7 @@
 use Bow\Database\Migration\Migration;
 use Bow\Database\Migration\SQLGenerator;
 
-class Version20240108222751CreateTechnologysTable extends Migration
+class Version20240108222751CreateTechnologiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -32,6 +32,6 @@ class Version20240108222751CreateTechnologysTable extends Migration
      */
     public function rollback(): void
     {
-        $this->dropIfExists('categories');
+        $this->dropIfExists('technologies');
     }
 }
