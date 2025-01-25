@@ -52,13 +52,13 @@ class UserController extends Controller
      *
      * @return mixed
      */
-    public function showNotification(Request $request)
+    public function showMessage(Request $request)
     {
         $user = $request->user();
 
-        $notifications = $user->notifications ?? [];
+        $messages = $user->messages ?? [];
 
-        return view('user.notification', compact('user', 'notifications'));
+        return view('user.message', compact('user', 'messages'));
     }
 
     /**
@@ -194,34 +194,34 @@ class UserController extends Controller
     }
 
     /**
-     * Delete the all notifications
+     * Delete the all messages
      *
      * @return mixed
      */
-    public function deleteNotifications(Request $request)
+    public function deleteMessages(Request $request)
     {
         $user = $request->user();
 
-        $user->notifications()->delete();
+        $user->messages()->delete();
 
         return redirect()
             ->back()
-            ->withFlash('success', 'Toutes les notifications ont été supprimé !');
+            ->withFlash('success', 'Toutes les messages ont été supprimé !');
     }
 
     /**
-     * Delete the all notifications
+     * Delete the all messages
      *
      * @return mixed
      */
-    public function readNotifications(Request $request)
+    public function readMessages(Request $request)
     {
         $user = $request->user();
 
-        $user->unreadNotifications()->each(fn ($notification) => $notification->markAsRead());
+        $user->unreadMessages()->each(fn ($message) => $message->markAsRead());
 
         return redirect()
             ->back()
-            ->withFlash('success', 'Tout les notifications ont été marqué comme lu !');
+            ->withFlash('success', 'Tout les messages ont été marqué comme lu !');
     }
 }

@@ -142,11 +142,6 @@
           </div>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-1 visible-xs" style="margin-bottom: 15px; margin-top: 10px;">
-        %include('partials.social-sidebar', ['class' => 'nav-pills'])
-        <br>
-        %include('partials.tags-sidebar', ['taggables' => $tutorial->taggables, 'class' => 'nav-pills'])
-      </div>
     </div>
 
     %if(count($tutorials) > 0)

@@ -34,7 +34,7 @@
       </div>
     </div>
   </header>
-
+  %include('partials.social-sidebar', ['class' => 'nav-pills', 'without_title' => true, 'title' => $question->title, 'url' => route('forum.question', ['slug' => $question->slug, 'id' => $question->id])])
   %if(!isset($without_content))
     <div style="margin-top: 20px">
       <?= markdown($question->content) ?>

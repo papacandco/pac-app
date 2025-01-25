@@ -51,7 +51,7 @@ return [
         'content' => $content,
         'slug' => $faker->slug,
         'color' => $faker->hexColor,
-        'video' => 'https://www.youtube.com/embed/'.['R8gKs4jp7RU', 'HzZxcfVn_08', 'XkvrHQNmigs'][rand(0, 2)],
+        'video' => 'https://www.youtube.com/embed/' . ['R8gKs4jp7RU', 'HzZxcfVn_08', 'XkvrHQNmigs'][rand(0, 2)],
         'description' => $faker->text,
         'cover' => '/img/cover.jpg',
         'technology_id' => 1,

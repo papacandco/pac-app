@@ -10,9 +10,11 @@
     %include('partials.newsletter')
   </div>
 </div>
-<br>
-<div class="row">
-  <div class="col-sm-12">
-    %include('partials.comment')
+%if(!isset($disable_comment))
+  <br>
+  <div class="row">
+    <div class="col-sm-12">
+      %include('partials.comment')
+    </div>
   </div>
-</div>
+%endif

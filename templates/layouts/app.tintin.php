@@ -99,8 +99,8 @@
 
   %inject('script')
   %include('layouts.flash')
-  %if(!isset($do_not_show_buycoffe_page))
+  {## %if(!isset($do_not_show_buycoffe_page))
     <script data-name="BMC-Widget" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="iOLqZ3h" data-description="Soutenez-nous sur Buy me a coffee!" data-color="#144571" data-position="right" data-x_margin="18" data-y_margin="18"></script>
-  %endif
+  %endif ##}
 </body>
 </html>

@@ -99,7 +99,7 @@ class Curriculum extends Model
     {
         return $this->graphs()
             ->where('graph_type', Tutorial::class)
-            ->join('comments',  ['commentable_type' => 'graph_type', 'commentable_id' => 'graph_id']);
+            ->join('comments', ['commentable_type' => 'graph_type', 'commentable_id' => 'graph_id']);
     }
 
     /**

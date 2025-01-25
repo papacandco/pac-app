@@ -32,14 +32,7 @@
   %include('partials.ads')
   <section class="container">
     <div class="row">
-      <div class="col-sm-2 hidden-xs" style="margin-top: 10px;">
-        %include('partials.social-sidebar', ['title' => $question->title, 'url' => route('forum.question', ['slug' => $question->slug, 'id' => $question->id])])
-        %if(count($taggables = ($question->taggables ?? [])) > 0)
-          <br>
-          %include('partials.tags-sidebar', ['taggables' => $taggables])
-        %endif
-      </div>
-      <section class="col-sm-8" style="margin-top: 10px;">
+      <section class="col-sm-9" style="margin-top: 10px;">
         <div class="pull-right" style="position: relative; top: 5px">
           <a href="{{ route('forum.writer') }}{{ $curriculum ? "?curriculum_id=" . $curriculum->id : "" }}" class="btn btn-sm btn-danger">Créer un nouveau sujet</a>
         </div>
@@ -86,15 +79,33 @@
           </div>
         </div>
       </section>
-      <aside class="col-sm-3 visible-xs" style="margin-top: 10px; margin-bottom: 10px">
-        %include('partials.social-sidebar', ['title' => $question->title, 'url' => route('forum.question', ['slug' => $question->slug, 'id' => $question->id]), 'class' => 'nav-pills'])
-        %if(count($taggables = $question->taggables) > 0)
-          <br>
-          %include('partials.tags-sidebar', ['taggables' => $taggables, 'class' => 'nav-pills'])
-        %endif
-        <br>
-        %include('layouts.content-sidebar', ['hidden_author' => true, 'class' => 'nav-pills'])
-      </aside>
+
+      <div class="col-xs-12 col-sm-3" style="margin-top: 10px;">
+        %include('partials.ads-sider')
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="font-weight-bolder">
+              {{ __('tutorial.author_title') }}
+            </p>
+            <p>
+              <img src="{{ gravatar($question->author->avatar) }}" class="img-circle img-responsive" alt="Favoris" style="width: 40px; height: 40px; display: inline-block; background-color: #eee;">
+              <strong>{{ $question->author->name }}</strong>
+            </p>
+            <p>
+              {{ $question->author->description }}
+              %if($question->author->link)
+                <br /><a href="{{ $question->author->link }}" target="_blank">{{ $question->author->link }}</a>
+              %endif
+            </p>
+            <hr />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            %include('partials.about', ['disable_about' => true])
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   %auth

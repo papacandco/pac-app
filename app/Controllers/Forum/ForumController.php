@@ -5,7 +5,7 @@ namespace App\Controllers\Forum;
 use App\Controllers\Controller;
 use App\Controllers\Traits\ForumTrait;
 use App\Controllers\Traits\TaggableTrait;
-use App\Producers\NotificationCurriculumFollowersForTheQuestionCreationProducer;
+use App\Producers\MessageCurriculumFollowersForTheQuestionCreationProducer;
 use App\Models\Comment;
 use App\Models\Curriculum;
 use App\Models\Question;
@@ -139,7 +139,7 @@ class ForumController extends Controller
         if (! is_null($curriculum)) {
             // Notify all curriculum follower that user have sent a new question
             queue(
-                new NotificationCurriculumFollowersForTheQuestionCreationProducer(
+                new MessageCurriculumFollowersForTheQuestionCreationProducer(
                     $curriculum,
                     $question
                 )

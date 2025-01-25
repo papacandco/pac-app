@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Bow\Database\Barry\Model;
 use Bow\Database\Barry\Relations\HasMany;
+use Bow\Messaging\CanSendMessaging;
 
 class Author extends Model
 {
+    use CanSendMessaging;
+
     /**
      * Get the list tutorials
      */

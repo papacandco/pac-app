@@ -15,12 +15,12 @@ use Bow\Validation\Validate;
 use Bow\Validation\Validator;
 use App\Services\CinetpayService;
 use App\Events\PaymentSuccessfulEvent;
-use App\Notifications\DonationFailedNotification;
-use App\Notifications\DonationSuccessNotification;
-use App\Notifications\SubscriptionFailedNotification;
-use App\Notifications\SubscriptionSuccessNotification;
-use App\Notifications\ElementPaymentFailedNotification;
-use App\Notifications\ElementPaymentSuccessNotification;
+use App\Messages\DonationFailedMessage;
+use App\Messages\DonationSuccessMessage;
+use App\Messages\SubscriptionFailedMessage;
+use App\Messages\SubscriptionSuccessMessage;
+use App\Messages\ElementPaymentFailedMessage;
+use App\Messages\ElementPaymentSuccessMessage;
 
 class PaymentController extends Controller
 {
@@ -232,8 +232,7 @@ class PaymentController extends Controller
         );
 
         // Create associate transaction
-        $this->transaction->create(
-            [
+        $this->transaction->create([
             'id' => $transaction,
             'amount' => $product->price,
             'status' => 'pending',
@@ -243,17 +242,14 @@ class PaymentController extends Controller
             'target_type' => get_class($product),
             'user_id' => $user->getKey(),
             'user_type' => get_class($user),
-            'extras' => json_encode(
-                [
+            'extras' => json_encode([
                 'provider_data' => $payment,
                 'currency' => $currency,
                 'reference' => sprintf('subscription to product %s', $product->id),
                 'ip' => $request->ip(),
                 'user_agent' => $request->getHeader('user-agent'),
-                ]
-            ),
-            ]
-        );
+            ]),
+        ]);
 
         return redirect()->to($payment->payment_url);
     }
@@ -370,9 +366,9 @@ class PaymentController extends Controller
         }
 
         match ($transaction->type) {
-            'donation' => $this->sendDonationNotification($transaction),
-            'subscription' => $this->sendSubscriptionNotification($transaction),
-            'element' => $this->sendElementNotification($transaction),
+            'donation' => $this->sendDonationMessage($transaction),
+            'subscription' => $this->sendSubscriptionMessage($transaction),
+            'element' => $this->sendElementMessage($transaction),
             default => null,
         };
 
@@ -411,9 +407,9 @@ class PaymentController extends Controller
             $transaction->touch();
 
             match ($transaction->type) {
-                'donation' => $this->sendDonationNotification($transaction),
-                'subscription' => $this->sendSubscriptionNotification($transaction),
-                'element' => $this->sendElementNotification($transaction),
+                'donation' => $this->sendDonationMessage($transaction),
+                'subscription' => $this->sendSubscriptionMessage($transaction),
+                'element' => $this->sendElementMessage($transaction),
                 default => null,
             };
 
@@ -450,75 +446,75 @@ class PaymentController extends Controller
     }
 
     /**
-     * Send notification
+     * Send message
      *
      * @param  Transaction $transaction
      * @return void
      */
-    private function sendDonationNotification(Transaction $transaction)
+    private function sendDonationMessage(Transaction $transaction)
     {
         // Log payment information
         if ($transaction->status != static::SUCCESS) {
             Log::stack(['payment', 'slack'])
                 ->error('payment [' . $transaction->status . '] with [' . $transaction->id . ']');
 
-            $message = new DonationFailedNotification($transaction);
+            $message = new DonationFailedMessage($transaction);
         } else {
             Log::stack(['payment', 'slack'])
                 ->info('payment [' . $transaction->status . '] amount: [' . $transaction->amount . ' XOF] - ' . $transaction->id);
 
-            $message = new DonationSuccessNotification($transaction);
+            $message = new DonationSuccessMessage($transaction);
         }
 
-        $transaction->user->notify($message);
+        $transaction->user->sendMessage($message);
     }
 
     /**
-     * Send notification
+     * Send message
      *
      * @param  Transaction $transaction
      * @return void
      */
-    private function sendSubscriptionNotification(Transaction $transaction)
+    private function sendSubscriptionMessage(Transaction $transaction)
     {
         // Log payment information
         if ($transaction->status != static::SUCCESS) {
             Log::stack(['payment', 'slack'])
                 ->error('payment [' . $transaction->status . '] with [' . $transaction->id . ']');
 
-            $message = new SubscriptionFailedNotification($transaction);
+            $message = new SubscriptionFailedMessage($transaction);
         } else {
             Log::stack(['payment', 'slack'])
                 ->info('payment [' . $transaction->status . '] amount: [' . $transaction->amount . ' XOF] - ' . $transaction->id);
 
-            $message = new SubscriptionSuccessNotification($transaction);
+            $message = new SubscriptionSuccessMessage($transaction);
         }
 
-        $transaction->user->notify($message);
+        $transaction->user->sendMessage($message);
     }
 
     /**
-     * Send notification
+     * Send message
      *
      * @param  Transaction $transaction
      * @return void
      */
-    private function sendElementNotification(Transaction $transaction)
+    private function sendElementMessage(Transaction $transaction)
     {
         // Log payment information
         if ($transaction->status != static::SUCCESS) {
             Log::stack(['payment', 'slack'])
                 ->error('payment [' . $transaction->status . '] with [' . $transaction->id . ']');
 
-            $message = new ElementPaymentFailedNotification($transaction);
+            $message = new ElementPaymentFailedMessage($transaction);
         } else {
             Log::stack(['payment', 'slack'])
                 ->info('payment [' . $transaction->status . '] amount: [' . $transaction->amount . ' XOF] - ' . $transaction->id);
 
-            $message = new ElementPaymentSuccessNotification($transaction);
+            $message = new ElementPaymentSuccessMessage($transaction);
         }
 
-        $transaction->user->notify($message);
+        $transaction->user->sendMessage($message);
     }
 
     /**

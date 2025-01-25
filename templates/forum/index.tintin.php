@@ -22,7 +22,7 @@
     <aside class="col-sm-2 hidden-xs" style="margin-top: 10px;">
       %include('layouts.content-sidebar')
     </aside>
-    <section class="col-sm-8 col-xs-12" style="margin-top: 10px;">
+    <section class="col-sm-9 col-xs-12" style="margin-top: 10px;">
       <div class="row no-gutters nogutters">
         <div class="col-sm-12">
           <div class="pull-right" style="position: relative; top: 5px">

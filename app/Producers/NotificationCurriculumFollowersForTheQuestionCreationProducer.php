@@ -2,12 +2,12 @@
 
 namespace App\Producers;
 
+use App\Messages\CurriculumQuestionCreatedMessage;
 use App\Models\Curriculum;
 use App\Models\Question;
-use App\Notifications\CurriculumQuestionCreatedNotification;
 use Bow\Queue\ProducerService;
 
-class NotificationCurriculumFollowersForTheQuestionCreationProducer extends ProducerService
+class MessageCurriculumFollowersForTheQuestionCreationProducer extends ProducerService
 {
     /**
      * Create a new job instance.
@@ -28,8 +28,8 @@ class NotificationCurriculumFollowersForTheQuestionCreationProducer extends Prod
     public function process(): void
     {
         foreach ($this->curriculum->followers as $follower) {
-            $follower->user->notify(
-                new CurriculumQuestionCreatedNotification(
+            $follower->user->sendMessage(
+                new CurriculumQuestionCreatedMessage(
                     $this->curriculum,
                     $this->question
                 )

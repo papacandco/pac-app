@@ -102,7 +102,7 @@ class SoauthController extends Controller
             ]);
 
             // Send the welcome email
-            $registed_user->sendWelcomeNotification();
+            $registed_user->sendWelcomeMessage();
         }
 
         // Log user

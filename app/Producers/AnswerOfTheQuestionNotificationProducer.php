@@ -2,13 +2,13 @@
 
 namespace App\Producers;
 
+use App\Messages\AnswerToTheAuthorOfTheQuestionMessage;
+use App\Messages\AnswerToTheFollowerOfTheQuestionMessage;
 use App\Models\Comment;
 use App\Models\Question;
-use App\Notifications\AnswerToTheAuthorOfTheQuestionNotification;
-use App\Notifications\AnswerToTheFollowerOfTheQuestionNotification;
 use Bow\Queue\ProducerService;
 
-class AnswerOfTheQuestionNotificationProducer extends ProducerService
+class AnswerOfTheQuestionMessageProducer extends ProducerService
 {
     /**
      * Create a new job instance.
@@ -29,8 +29,8 @@ class AnswerOfTheQuestionNotificationProducer extends ProducerService
     public function process(): void
     {
         if ($this->question->user_id !== $this->comment->user_id) {
-            $this->question->author->notify(
-                new AnswerToTheAuthorOfTheQuestionNotification($this->question, $this->comment)
+            $this->question->author->sendMessage(
+                new AnswerToTheAuthorOfTheQuestionMessage($this->question, $this->comment)
             );
         }
 
@@ -38,8 +38,8 @@ class AnswerOfTheQuestionNotificationProducer extends ProducerService
 
         foreach ($bookmarks as $bookmark) {
             if ($this->comment->user_id != $bookmark->user_id) {
-                $notification = new AnswerToTheFollowerOfTheQuestionNotification($this->question, $this->comment, $bookmark);
-                $bookmark->user->notify($notification);
+                $message = new AnswerToTheFollowerOfTheQuestionMessage($this->question, $this->comment, $bookmark);
+                $bookmark->user->sendMessage($message);
             }
         }
     }

@@ -9,7 +9,7 @@ use App\Models\Tutorial;
 use League\CommonMark\CommonMarkConverter;
 use Bow\Database\Collection as DatabaseCollection;
 
-if ( ! function_exists("markdown")) {
+if (! function_exists("markdown")) {
     function markdown($expression)
     {
         $converter = new CommonMarkConverter([
@@ -178,7 +178,6 @@ if (! function_exists('get_latest_comment')) {
      */
     function get_latest_comment($context = null, $take = 5)
     {
-
         if (is_null($context)) {
             return \App\Models\Comment::take($take)->get();
         }

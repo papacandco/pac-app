@@ -8,7 +8,7 @@ use App\Models\Traits\HasUpdated;
 use App\Models\Traits\LatestTrait;
 use Bow\Database\Barry\Relations\HasMany;
 use Bow\Database\Barry\Relations\BelongsTo;
-use App\Notifications\ReplyCommentNotification;
+use App\Messages\ReplyCommentMessage;
 
 class Comment extends Model
 {
@@ -157,7 +157,7 @@ class Comment extends Model
     }
 
     /**
-     * Send reply comment notification
+     * Send reply comment message
      *
      * @return void
      */
@@ -169,7 +169,7 @@ class Comment extends Model
 
         if (! is_null($this->parent)) {
             if ($this->parent->user_id !== $this->user_id) {
-                $this->parent->user->notify(new ReplyCommentNotification($this->parent, $this));
+                $this->parent->user->notify(new ReplyCommentMessage($this->parent, $this));
             }
         }
     }

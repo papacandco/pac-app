@@ -12,7 +12,7 @@ class Version20240119161127CreateConfigurationTable extends Migration
      */
     public function up(): void
     {
-       $this->create('configurations', function (SQLGenerator $table) {
+        $this->create('configurations', function (SQLGenerator $table) {
             $table->addString('name');
             $table->addString('username');
             $table->addString('email');
@@ -31,6 +31,6 @@ class Version20240119161127CreateConfigurationTable extends Migration
      */
     public function rollback(): void
     {
-       $this->dropIfExists('configurations');
+        $this->dropIfExists('configurations');
     }
 }

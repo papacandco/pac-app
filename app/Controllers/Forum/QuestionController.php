@@ -6,7 +6,7 @@ use App\Controllers\Controller;
 use App\Controllers\Traits\ForumTrait;
 use App\Controllers\Traits\TaggableTrait;
 use App\Models\Question;
-use App\Producers\AnswerOfTheQuestionNotificationProducer;
+use App\Producers\AnswerOfTheQuestionMessageProducer;
 use Bow\Http\Request;
 
 class QuestionController extends Controller
@@ -172,7 +172,7 @@ class QuestionController extends Controller
             'commentable_type' => get_class($question),
         ]);
 
-        queue(new AnswerOfTheQuestionNotificationProducer($question, $comment));
+        queue(new AnswerOfTheQuestionMessageProducer($question, $comment));
 
         return redirect()
             ->back()

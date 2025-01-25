@@ -8,6 +8,7 @@ use App\Models\Traits\LatestTrait;
 use App\Models\Traits\PremiumTrait;
 use App\Models\Traits\BookmarkTrait;
 use Bow\Database\Barry\Relations\HasMany;
+use Bow\Messaging\CanSendMessaging;
 use Bow\Support\Collection;
 
 class User extends Authentication
@@ -15,6 +16,7 @@ class User extends Authentication
     use BookmarkTrait;
     use LatestTrait;
     use PremiumTrait;
+    use CanSendMessaging;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -44,12 +46,12 @@ class User extends Authentication
         User::deleting(fn ($user) => $user->comments()->delete());
     }
 
-    public function sendWelcomeNotification()
+    public function sendWelcomeMessage()
     {
-        // Send mail notification
+        // Send mail message
     }
 
-    public function unreadNotifications(): Collection
+    public function unreadMessages(): Collection
     {
         return new Collection([]);
     }

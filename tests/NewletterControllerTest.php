@@ -79,7 +79,7 @@ class NewletterControllerTest extends TestCase
 
         if (is_null($newsletter)) {
             $newsletter = Newsletter::create([
-                'email' => 'clc'.uniqid().'@email.com',
+                'email' => 'clc' . uniqid() . '@email.com',
             ]);
         }
 

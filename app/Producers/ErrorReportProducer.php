@@ -7,7 +7,6 @@ use Bow\Queue\ProducerService;
 
 class ErrorReportProducer extends ProducerService
 {
-
     /**
      * The data
      *
