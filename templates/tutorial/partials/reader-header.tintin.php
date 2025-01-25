@@ -1,5 +1,5 @@
 %if($form_curriculum)
-  <div class="container cirruculum-header-bg-color" style="padding: 10px;">
+  <div class="container-fluid cirruculum-header-bg-color" style="padding: 10px;">
     <div class="container" style="padding-top: 0;">
       <div class="row">
         <div class="col-sm-9" id="curriculum-video-container">
