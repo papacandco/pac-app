@@ -9,10 +9,20 @@
 %block('content')
   %include('curriculum.partials.curriculum-header')
   <section class="container">
-    <div class="row" style="margin-left: unset; margin-right: unset">
-      <section class="col-sm-8" style="margin-top: 10px;">
+    <div class="row">
+      <section class="col-sm-9">
         <div class="video-mobile">
           %include('partials.video', ['url' => $curriculum->video, 'mode' => 'video'])
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            %include('partials.social-sidebar', ['without_title' => true, 'class' => 'nav-pills', 'title' => $curriculum->title, 'url' => route('curriculum.single', ['slug' => $curriculum->slug])])
+          </div>
+          %if($curriculum->video)
+            <div class="col-sm-6">
+              %include('partials.tags-sidebar', ['without_title' => true, 'taggables' => $curriculum->taggables ?? [], 'class' => 'nav-pills pull-right'])
+            </div>
+          %endif
         </div>
         <div class="row" style="margin-top: 18px;">
           %if(strlen($curriculum->long_description) > 0)
@@ -33,28 +43,48 @@
             %endif
           </div>
         </div>
-      </section>
-      <aside class="col-sm-2 visible-xs" style="margin-top: 10px; padding: 10px">
-        %include('layouts.content-sidebar', ['class' => 'nav-pills'])
-      </aside>
-      <aside class="col-sm-4" style="margin-top: 10px; padding: 10px">
-        <div class="row">
-          <div class="col-xs-12">
-            %include('partials.social-sidebar', ['title' => $curriculum->title, 'without_title' => false, 'class' => 'nav-pills', 'url' => route('curriculum.single', ['slug' => $curriculum->slug])])
-          </div>
-        </div>
-        <br />
-        %include('partials.ads-sider')
         %if($curriculum->with_forum)
-          <div class="row">
-            <div class="col-sm-12">
-              %include('partials.forum', [ 'questions' => $curriculum->lastQuestion(5), 'title' => $curriculum->title, "style" => "padding-left: 5px; font-size: 14px;", 'forum_link' => route('forum.single', ['slug' => $curriculum->slug, 'id' => $curriculum->id])])
-            </div>
+          <hr />
+          <div class="row" style="margin-top: 18px;">
+            %include('partials.forum', [ 'questions' => $curriculum->lastQuestion(5), 'title' => $curriculum->title, "style" => "padding-left: 5px; font-size: 14px;", 'forum_link' => route('forum.single', ['slug' => $curriculum->slug, 'id' => $curriculum->id])])
           </div>
         %endif
+      </section>
+      <aside class="col-xs-12 col-sm-3" style="margin-top: 15px;">
+        %auth
+          %if($followed)
+            <a class="btn btn-danger btn-block" href="{{ route('tutorial.reader', ['slug' => $tutorial->slug, 'id' => $tutorial->id]) }}#pager-{{ $tutorial->id }}">
+              Continuer la formation
+            </a>
+          %else
+            <a class="btn btn-danger" data-toggle="modal" data-target="#follow-curriculum-modal">
+              Demarrer cette formation
+            </a>
+          %endif
+        %else
+          <a class="btn btn-danger" href="{{ route("login") }}?redirect={{ route('curriculum.single', ['slug' => $curriculum->slug]) }}" class="text-white">Demarrer cette formation</a>
+        %endauth
+        %include('partials.ads-sider')
         <div class="row">
-          <div class="col-sm-12">
-            %include('partials.about', ["disable_about" => true])
+          <div class="col-sm-12" style="margin-top: 15px;">
+            <p class="font-weight-bolder">
+              {{ __('tutorial.author_title') }}
+            </p>
+            <p>
+              <img src="{{ gravatar($tutorial->author->avatar) }}" class="img-circle img-responsive" alt="Favoris" style="width: 40px; height: 40px; display: inline-block; background-color: #eee;">
+              <strong>{{ $tutorial->author->name }}</strong>
+            </p>
+            <p>
+              {{ $tutorial->author->description }}
+              %if($tutorial->author->link)
+                <br /><a href="{{ $tutorial->author->link }}" target="_blank">{{ $tutorial->author->link }}</a>
+              %endif
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12" style="margin-top: 15px;">
+            %include('partials.about', ['disable_about' => true])
           </div>
         </div>
       </aside>
