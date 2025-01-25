@@ -5,7 +5,7 @@
 %if(count($annonces) > 0)
   <div id="ads-carousel" class="owl-carousel" style="height: auto !important">
     %loop($annonces as $ads)
-    <div class="container-fluid bg-blue" style="background: {{ $ads->bg_color }} !important; min-height: 50px !important; max-height: 50px !important">
+    <div class="container bg-blue" style="background: {{ $ads->bg_color }} !important; min-height: 50px !important; max-height: 50px !important">
       <div class="container text-center hidden-xs">
         <span class="pull-right text-white label label-primary" style="background: #151515">Ads</span>
         <div style="padding: 5px; color: {{ $ads->font_color }} !important">

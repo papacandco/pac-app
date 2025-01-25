@@ -1,5 +1,5 @@
 %if($form_curriculum)
-  <div class="container-fluid cirruculum-header-bg-color">
+  <div class="container cirruculum-header-bg-color">
     <div class="container">
       <div class="row">
         %auth

@@ -22,19 +22,17 @@
   %if($form_curriculum)
     %include('tutorial.partials.description-header')
   %endif
-
   %include('tutorial.partials.reader-header')
-
   <section class="container">
     <div class="row">
-      <div class="col-sm-1 hidden-xs" style="margin-top: 5px;">
+      {## <div class="col-sm-1 hidden-xs" style="margin-top: 5px;">
         %include('partials.social-sidebar', ['title' => $tutorial->title, 'url' => route('tutorial.reader', ['slug' => $tutorial->slug, 'id' => $tutorial->id])])
         %if($tutorial->video)
           <br>
           %include('partials.tags-sidebar', ['taggables' => $tutorial->taggables])
         %endif
-      </div>
-      <div class="col-sx-12 col-sm-8" style="margin-top: 10px;">
+      </div> ##}
+      <div class="col-sx-12 col-sm-9" style="margin-top: 10px;">
         %if(!(is_null($tutorial->video) || trim($tutorial->video) == '') && !$form_curriculum)
           <div style="padding-top: 0; margin-bottom: 20px;">
             %include('partials.video', ['url' => $tutorial->video, 'mode' => 'video', 'poster' => $tutorial->cover])
@@ -44,6 +42,16 @@
             <img class="img-responsive" src="{{ $tutorial->cover }}" alt="{{ $tutorial->title }}" style="max-width: auto;">
           %endif
         %endif
+        <div class="row">
+          <div class="col-sm-6">
+            %include('partials.social-sidebar', ['without_title' => true, 'class' => 'nav-pills', 'title' => $tutorial->title, 'url' => route('tutorial.reader', ['slug' => $tutorial->slug, 'id' => $tutorial->id])])
+          </div>
+          %if($tutorial->video)
+            <div class="col-sm-6">
+              %include('partials.tags-sidebar', ['without_title' => true, 'taggables' => $tutorial->taggables, 'class' => 'nav-pills pull-right'])
+            </div>
+          %endif
+        </div>
 
         <div class="row">
           <div class="col-sm-12">

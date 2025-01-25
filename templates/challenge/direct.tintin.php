@@ -12,7 +12,7 @@
 %endblock
 
 %block('content')
-<div class="container-fluid bg-primary video-mobile min-vh-100"
+<div class="container bg-primary video-mobile min-vh-100"
   style="padding: 30px; padding-top: 0px;">
   <div class="row no-gutters">
     <div class="col-sm-12">

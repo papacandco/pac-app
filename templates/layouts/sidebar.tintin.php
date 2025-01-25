@@ -36,7 +36,7 @@
     }
 
     /*Center Brand*/
-    nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container .navbar-brand {
       margin-left: 0px;
     }
     /*Center Brand*/
@@ -64,7 +64,7 @@
     }
 
     /*allows nav box to use 100% width*/
-    nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
+    nav.sidebar .navbar-collapse, nav.sidebar .container{
       padding: 0 0px 0 0px;
     }
 
@@ -133,7 +133,7 @@
 </style>
 
 <nav class="navbar navbar-default sidebar" role="navigation">
-  <div class="container-fluid">
+  <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">

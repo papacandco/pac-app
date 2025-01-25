@@ -1,4 +1,4 @@
-<div class="container-fluid py-3" style="background-color: #f3f3f3">
+<div class="container py-3" style="background-color: #f3f3f3">
   <div class="container">
     <div class="justify-content-center">
       <div class="row text-center">

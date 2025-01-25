@@ -1,6 +1,8 @@
-<p>
-  <span class="font-weight-bolder">Tags</span>
-</p>
+%if (!isset($without_title))
+  <p>
+    <span class="font-weight-bolder">Tags</span>
+  </p>
+%endif
 <ul class="nav {{ $class ?? '' }}">
   %loop($taggables as $taggable)
     <li>

@@ -10,7 +10,7 @@ return [
      * The auto csrf enable csrf protected automaticly
      * on POST, DELETE, PUT
      */
-    "auto_csrf" => app_env("APP_AUTO_CSRF", true),
+    "auto_csrf" => (bool) app_env("APP_AUTO_CSRF", true),
 
     /**
      * Root of the application
