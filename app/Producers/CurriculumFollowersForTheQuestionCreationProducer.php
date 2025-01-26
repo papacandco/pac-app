@@ -7,7 +7,7 @@ use App\Models\Curriculum;
 use App\Models\Question;
 use Bow\Queue\ProducerService;
 
-class MessageCurriculumFollowersForTheQuestionCreationProducer extends ProducerService
+class CurriculumFollowersForTheQuestionCreationProducer extends ProducerService
 {
     /**
      * Create a new job instance.

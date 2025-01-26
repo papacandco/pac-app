@@ -8,7 +8,7 @@ use App\Models\Traits\LatestTrait;
 use App\Models\Traits\PremiumTrait;
 use App\Models\Traits\BookmarkTrait;
 use Bow\Database\Barry\Relations\HasMany;
-use Bow\Messaging\CanSendMessaging;
+use Bow\Messaging\CanSendMessage;
 use Bow\Support\Collection;
 
 class User extends Authentication
@@ -16,7 +16,7 @@ class User extends Authentication
     use BookmarkTrait;
     use LatestTrait;
     use PremiumTrait;
-    use CanSendMessaging;
+    use CanSendMessage;
 
     /**
      * The attributes that should be hidden for arrays.

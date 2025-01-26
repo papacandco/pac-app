@@ -8,7 +8,7 @@ use App\Models\Comment;
 use App\Models\Question;
 use Bow\Queue\ProducerService;
 
-class AnswerOfTheQuestionMessageProducer extends ProducerService
+class AnswerOfTheQuestionProducer extends ProducerService
 {
     /**
      * Create a new job instance.
